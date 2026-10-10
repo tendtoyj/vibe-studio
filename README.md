@@ -54,7 +54,7 @@ Codex app에서는 Plugins에서 추가된 marketplace를 열고 `Vibe Studio`�
 | 스킬 | 만드는 것 |
 |---|---|
 | `build-spec` | `work/SETUP.md` + `work/{NN-이름}/SPEC.md` — 스택(프로토타입은 Vite, 실제 기능은 Next.js)·데이터 방식·첫 버전에서 흉내 낼 기능을 SETUP에 정하고, 부를 때마다 작업 묶음 폴더를 하나 만들어 눌러볼 수 있는 조각 3~6개와 확인 기준을 적음 |
-| `build-slice` | 코드와 커밋 + `work/LOG.md` — 묶음의 조각 하나를 DESIGN.md의 모습과 VOICE.md의 문구로 만들고, 브라우저에서 확인 기준을 눌러본 뒤 저장. "이상해요"(고치기)와 "되돌려줘"(되돌리기)도 여기서 |
+| `build-slice` | 코드와 커밋 + `work/LOG.md` — 묶음의 조각을 차례로 DESIGN.md의 모습과 VOICE.md의 문구로 만들고, 조각마다 브라우저에서 확인 기준을 눌러본 뒤 저장. 다 만들면 개발 서버를 켜 둬 직접 눌러볼 수 있음. "이상해요"(고치기)와 "되돌려줘"(되돌리기)도 여기서 |
 | `build-check` | `work/{NN-이름}/REVIEW.md` + `shots/` — 묶음의 플로우를 사용자처럼 처음부터 끝까지 써보고 막힘·어긋남·위험(키 노출, 보안 설정)만 스크린샷과 함께 정리. 달라진 점은 userflow-generator로 넘김 |
 
 - 폴더 구조:
