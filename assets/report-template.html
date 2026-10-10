@@ -18,6 +18,10 @@
   - .shots > figure.shot   화면 캡처 카드: img + figcaption(strong 제목 + p 설명 + .source)
                            (.shots.is-mobile = 세로로 긴 모바일 캡처용, 한 줄에 3장)
   - ul.refs                출처·링크 목록
+  - .spectrum > .spectrum-row   양 끝 라벨 사이 5칸 척도: span.spectrum-label + .spectrum-track(i 5개, 하나에 .is-on) + span.spectrum-label
+  - .compare > .compare-col     두 단 비교 (.is-do = 해요 ✓, .is-dont = 안 해요 ✕): h3 + ul > li
+                                li 안에 strong(항목) + span.note(설명) 가능
+  - p.say                  실제 문구 예시 한 줄 (.say.is-do = 좋은 예, .say.is-dont = 피할 예)
 -->
 <html lang="ko">
 <head>
@@ -35,6 +39,10 @@
     --ink-3: #8a8a96;
     --accent: #2f6bff;
     --accent-soft: #eef3ff;
+    --good: #12805c;
+    --good-soft: #e9f6f0;
+    --bad: #c8372d;
+    --bad-soft: #fcefee;
     --radius: 12px;
     --sidebar: 248px;
   }
@@ -134,6 +142,7 @@
   .table-wrap tr:last-child > * { border-bottom: 0; }
   .table-wrap a { color: var(--accent); text-decoration: none; }
   .table-wrap + .sub { margin-top: 28px; }
+  .table-wrap + p { margin-top: 12px; }
 
   /* ---------- shots ---------- */
   .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
@@ -150,6 +159,34 @@
   .refs { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
   .refs li { margin-bottom: 6px; }
   .refs a { color: var(--accent); text-decoration: none; word-break: break-all; }
+
+  /* ---------- spectrum ---------- */
+  .spectrum { display: grid; gap: 14px; }
+  .spectrum-row { display: grid; grid-template-columns: 110px minmax(0, 1fr) 110px; align-items: center; gap: 16px; font-size: 13px; }
+  .spectrum-label { color: var(--ink-3); }
+  .spectrum-row .spectrum-label:last-child { text-align: right; }
+  .spectrum-track { position: relative; display: flex; justify-content: space-between; align-items: center; height: 16px; }
+  .spectrum-track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--line); transform: translateY(-50%); }
+  .spectrum-track i { position: relative; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line); }
+  .spectrum-track i.is-on { width: 16px; height: 16px; background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+
+  /* ---------- compare ---------- */
+  .compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .compare-col { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+  .compare-col h3 { font-size: 14px; margin: 0 0 10px; }
+  .compare-col.is-do h3 { color: var(--good); }
+  .compare-col.is-dont h3 { color: var(--bad); }
+  .compare-col.is-do h3::before { content: "✓ "; }
+  .compare-col.is-dont h3::before { content: "✕ "; }
+  .compare-col ul { list-style: none; margin: 0; padding: 0; }
+  .compare-col li { padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink); }
+  .compare-col li:first-child { border-top: 0; padding-top: 0; }
+  .compare-col li .note { display: block; font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+
+  /* ---------- say ---------- */
+  .say { margin: 8px 0 0; padding: 8px 12px; border-radius: 8px; background: var(--surface); font-size: 14px; color: var(--ink); border-left: 3px solid var(--line); }
+  .say.is-do { background: var(--good-soft); border-left-color: var(--good); }
+  .say.is-dont { background: var(--bad-soft); border-left-color: var(--bad); color: var(--ink-2); }
 
   /* ---------- chips ---------- */
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -174,6 +211,8 @@
     .flow-step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -20px; transform: translateX(-50%); }
     .grid { grid-template-columns: 1fr; }
     .shots { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+    .spectrum-row { grid-template-columns: 72px minmax(0, 1fr) 72px; gap: 10px; }
     .shots.is-mobile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .kv { grid-template-columns: 1fr; gap: 2px; }
     .kv dd { margin-bottom: 10px; }

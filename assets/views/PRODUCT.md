@@ -4,9 +4,9 @@
 
 **판단은 PRODUCT.md에 적힌 것으로만 한다.** 예: 포지셔닝이 비었는지, 이름이 확정됐는지는 PRODUCT.md를 보고 정한다.
 
-**함께 읽는 md:** `docs/VOICE.md`, `docs/DESIGN.md` — 있으면 요약 카드(브랜드·디자인 섹션)를 붙인다. 구체 구성은 brand-voice·design-brandfit을 연결할 때 이 문서에 추가한다. 지금은 두 파일이 있어도 섹션을 만들지 않는다.
+**함께 읽는 md:** `docs/VOICE.md` — 있으면 맨 끝에 브랜드 요약 섹션(`#brand`)을 붙인다(아래 "브랜드 요약"). `docs/DESIGN.md`의 디자인 요약은 design-brandfit을 연결할 때 추가한다. 그 전까지는 DESIGN.md가 있어도 섹션을 만들지 않는다.
 
-**사이드바:** Product가 `is-current`. 목차는 컨셉(`#concept`) · 핵심 기능(`#features`) · 포지셔닝(`#positioning`) · 플랫폼(`#platform`) · 이름(`#naming`).
+**사이드바:** Product가 `is-current`. 목차는 컨셉(`#concept`) · 핵심 기능(`#features`) · 포지셔닝(`#positioning`) · 플랫폼(`#platform`) · 이름(`#naming`), VOICE.md가 있으면 뒤에 브랜드(`#brand`).
 
 **본문 구성 (PRODUCT.md → html)** — 섹션 제목(`h2`)은 템플릿 것을 그대로 쓴다.
 
@@ -41,3 +41,24 @@
 `docs/benchmark.html`이 아직 없으면 링크 없이 `근거: docs/benchmark.md ({조사일} 조사)`로 적는다. 조사일은 PRODUCT.md 포지셔닝의 근거 줄에서 가져온다.
 
 표지 태그 ③ 작성일은 PRODUCT.md 머리말의 작성일 그대로 쓴다. 다른 단계가 PRODUCT.md를 고쳐도 바꾸지 않는다.
+
+## 브랜드 요약 (VOICE.md가 있을 때만)
+
+`#naming` 다음에 붙인다. VOICE.md에서 세 가지만 가져온다: 한 줄 무드, Voice Summary, 핵심 성격 이름들. 자세한 내용은 VOICE.html로 보낸다.
+
+```html
+<section class="section" id="brand">
+  <div class="section-label">Brand</div>
+  <h2>브랜드</h2>
+  <div class="callout">
+    <p class="big">{VOICE.md 한 줄 무드}</p>
+    <p>{Voice Summary}</p>
+    <div class="chips">
+      <span class="chip">{성격 1}</span><span class="chip">{성격 2}</span><span class="chip">{성격 3}</span>
+    </div>
+  </div>
+  <p class="source"><a href="VOICE.html">보이스 가이드 자세히 보기 →</a></p>
+</section>
+```
+`docs/VOICE.html`이 아직 없으면 마지막 줄은 `자세한 내용: docs/VOICE.md`로 적는다.
+
