@@ -20,7 +20,7 @@ description: docs/build/의 작업 묶음(SPEC.md)에서 아직 체크되지 않
 
 ## 입력 / 산출물
 
-docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다.
 
 - **입력:**
   - `docs/build/SETUP.md` — **필수.** 정해둔 것(스택·데이터·흉내만 낼 것·이번엔 안 함). 없으면 "먼저 build-spec으로 만들 조각을 정해 주세요"라고 안내하고 멈춘다.

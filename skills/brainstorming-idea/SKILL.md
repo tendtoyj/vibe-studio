@@ -11,7 +11,7 @@ description: 새로운 서비스 아이디어를 대화로 발굴하고 구체�
 
 ## 산출물
 
-docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다.
 
 - 작업 폴더의 `docs/PRODUCT.md`를 만든다. `docs/` 폴더가 없으면 만든다.
 - 같은 내용을 보기 좋게 그린 `docs/report/PRODUCT.html`도 만든다(아래 "PRODUCT.html 만들기" 참고).

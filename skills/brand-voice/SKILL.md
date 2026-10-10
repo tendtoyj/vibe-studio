@@ -11,7 +11,7 @@ description: 서비스의 이름을 확정하고 브랜드의 보이스·톤·�
 
 ## 입력 / 산출물
 
-docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다.
 
 - **입력:** `docs/PRODUCT.md`(컨셉·타깃·포지셔닝·이름 후보), `docs/BENCHMARK.md`(경쟁의 톤), `docs/DECISIONS.md`(앞 단계 결정). 있으면 읽어서 맥락으로 쓴다. 없어도 진행 가능하다.
 - **산출물:**

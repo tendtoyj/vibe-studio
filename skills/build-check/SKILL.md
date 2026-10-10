@@ -22,7 +22,7 @@ build-slice는 조각마다 그 조각의 확인 기준만 본다. 이 스킬은
 
 ## 입력 / 산출물
 
-docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다.
 
 - **입력:**
   - `docs/build/{묶음}/SPEC.md` — **필수.** 점검할 묶음의 목표·관련 플로우·조각·확인 기준. 묶음이 하나도 없으면 "먼저 build-spec과 build-slice로 만들어 주세요"라고 안내하고 멈춘다.

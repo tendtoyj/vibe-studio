@@ -13,7 +13,7 @@ description: 신규 서비스의 유저 플로우를 docs/FLOWS.md로 관리하�
 
 ## 입력 / 산출물
 
-docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다.
 
 - **입력:**
   - `docs/PRODUCT.md` — 핵심 솔루션·**핵심 기능 목록**·포지셔닝·플랫폼. **필수.** 없으면 "먼저 brainstorming-idea를 진행해 주세요"라고 안내한다.

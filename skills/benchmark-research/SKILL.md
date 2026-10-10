@@ -11,7 +11,7 @@ description: 기획 중인 서비스 아이디어와 비슷한 경쟁/참고 프
 
 ## 입력 / 산출물
 
-docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다.
 
 - **입력:** `docs/PRODUCT.md` (brainstorming-idea 산출물). 없으면 "먼저 brainstorming-idea로 아이디어를 잡아주세요"라고 안내하거나, 사용자에게 직접 컨셉을 물어 진행한다.
 - **산출물:**

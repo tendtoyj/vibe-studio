@@ -11,7 +11,7 @@ description: 다른 곳에서 가져온 레퍼런스 DESIGN.md(디자인 시스�
 
 ## 입력 / 산출물
 
-docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다.
 
 - **입력:**
   - `docs/DESIGN.md` — 외부에서 가져온 레퍼런스 디자인 시스템 문서. (Google Stitch DESIGN.md 9-섹션 포맷 + 필요 시 Voice/Narrative/Personas/States/Motion 등 확장 섹션을 포함하는 경우가 많다.)
