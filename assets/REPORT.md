@@ -4,7 +4,8 @@
 
 - **템플릿:** 이 파일과 같은 폴더의 `report-template.html`
 - **문서별 구성:** 이 파일과 같은 폴더의 `views/{md 파일 이름}` (예: `views/PRODUCT.md`). 어떤 md 내용을 어떤 부품으로 보여줄지가 들어 있다.
-- **결과물 위치:** md와 같은 `docs/` 폴더, 같은 이름에 확장자만 `.html`
+- **결과물 위치:** `docs/report/` 폴더, md와 같은 이름에 확장자만 `.html` (예: `docs/PRODUCT.md` → `docs/report/PRODUCT.html`). 폴더가 없으면 만든다. docs 폴더 전체 구조는 같은 폴더의 `LAYOUT.md`.
+- **경로:** html은 `docs/report/` 안에 있으므로 html끼리는 `PRODUCT.html`처럼 이름만으로 잇고, `docs/` 바로 아래 파일(이미지 등)은 `../images/…`처럼 한 단계 위를 가리킨다.
 
 ## 0. 핵심 원칙 — html은 md 파일만 보고 만든다
 
@@ -22,7 +23,7 @@ html은 **저장된 md 파일을 다시 읽어서, 그 내용만으로** 채운�
 2. 저장한 md 파일을 **다시 읽는다.** views에 함께 읽을 md가 적혀 있으면 그것도 읽는다.
 3. `report-template.html`과 `views/{md 파일 이름}`을 읽는다.
 4. 아래 규칙과 views의 구성대로 html을 만든다.
-5. html을 **새로 만들었거나 서비스 이름이 바뀐 경우에만** 다른 html의 사이드바를 갱신한다(3번 규칙). 이미 있던 html을 다시 만든 것뿐이면 다른 파일은 건드리지 않는다.
+5. html을 **새로 만들었거나 서비스 이름이 바뀐 경우에만** 다른 html의 사이드바와 `index.html`을 갱신한다(3번 규칙). 이미 있던 html을 다시 만든 것뿐이면 다른 파일은 건드리지 않는다.
 
 ## 1. 언제 만드나
 
@@ -62,20 +63,30 @@ html은 **저장된 md 파일을 다시 읽어서, 그 내용만으로** 채운�
 | # | 표시 이름 | 파일 |
 |:-:|---|---|
 | 1 | Product | `PRODUCT.html` |
-| 2 | Benchmark | `benchmark.html` |
+| 2 | Benchmark | `BENCHMARK.html` |
 | 3 | Voice | `VOICE.html` |
 | 4 | Design | `DESIGN.html` |
 | 5 | Flows | `FLOWS.html` |
 
 - **지금 만드는 문서:** `<li class="is-current">`. 링크 아래에 `<ul class="toc">`로 이 문서의 섹션 목차를 단다. 목차 링크의 `href="#id"`는 `<main>` 안 `section`의 `id`와 맞춘다.
-- **`docs/`에 html이 이미 있는 문서:** 클래스 없는 `<li>`로 링크만.
+- **`docs/report/`에 html이 이미 있는 문서:** 클래스 없는 `<li>`로 링크만.
 - **html이 아직 없는 문서:** `<li class="is-pending">`. ("준비 중"은 CSS가 자동으로 붙인다.)
 - **브랜드 영역(`.brand`):** 서비스 이름. 항상 `docs/PRODUCT.md` 제목의 이름을 쓴다(brand-voice가 이름을 확정하면 PRODUCT.md 제목도 바꾸므로 이게 기준이다). 아래 `<small>`은 `Vibe Studio` 그대로.
 
-**다른 html의 사이드바도 갱신한다.** html을 새로 만들었거나 서비스 이름이 바뀌었으면, `docs/`에 이미 있는 다른 html들을 아래처럼 고친다. 각 파일의 `<main>`은 건드리지 않는다.
+**다른 html의 사이드바도 갱신한다.** html을 새로 만들었거나 서비스 이름이 바뀌었으면, `docs/report/`에 이미 있는 다른 html들을 아래처럼 고친다. 각 파일의 `<main>`은 건드리지 않는다.
 - **문서 목록(`ul.nav`)은 위 표와 규칙대로 통째로 다시 쓴다.** 그 파일 자신의 `is-current`와 목차(`ul.toc`)만 그대로 옮겨 넣는다. 일부만 고치지 않는 이유: 예전 버전으로 만든 html은 목록 순서나 문서 구성이 지금과 다를 수 있어서다.
 - `.brand`와 `<title>`의 서비스 이름을 맞춘다.
 - `<style>` 블록을 지금 템플릿의 것으로 바꾼다(추가 `<style>` 블록이 있으면 그대로 둔다). 템플릿이 업데이트돼도 예전 html이 새 부품을 그릴 수 있게 하기 위해서다.
+
+**입구 `index.html`.** `docs/report/index.html`은 사람이 폴더에서 처음 여는 파일이다. 위 표 순서에서 **html이 있는 첫 문서**로 바로 넘겨준다. html을 새로 만들 때마다 아래 내용으로 다시 쓴다(템플릿을 쓰지 않는다).
+
+```html
+<!doctype html>
+<meta charset="utf-8">
+<title>{서비스 이름} — Vibe Studio</title>
+<meta http-equiv="refresh" content="0; url=PRODUCT.html">
+<a href="PRODUCT.html">{서비스 이름} 문서 열기</a>
+```
 
 ## 4. 공통 부품 쓰는 법
 
@@ -85,4 +96,4 @@ html은 **저장된 md 파일을 다시 읽어서, 그 내용만으로** 채운�
 
 ## 5. 보고
 
-html을 만든 뒤 사용자에게 보고할 때 html 경로를 같이 알려준다. 예: "브라우저로 `docs/PRODUCT.html`을 열면 한눈에 볼 수 있어요." 다른 html의 사이드바를 갱신했으면 그것도 한 줄로 알린다.
+html을 만든 뒤 사용자에게 보고할 때 html 경로를 같이 알려준다. 예: "브라우저로 `docs/report/PRODUCT.html`을 열면 한눈에 볼 수 있어요." 다른 html의 사이드바를 갱신했으면 그것도 한 줄로 알린다.

@@ -1,10 +1,10 @@
 # PRODUCT.html 구성
 
-`docs/PRODUCT.md` → `docs/PRODUCT.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다. `report-template.html`의 예시 내용이 바로 PRODUCT.html의 모양이다.
+`docs/PRODUCT.md` → `docs/report/PRODUCT.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다. `report-template.html`의 예시 내용이 바로 PRODUCT.html의 모양이다.
 
 **판단은 PRODUCT.md에 적힌 것으로만 한다.** 예: 포지셔닝이 비었는지, 이름이 확정됐는지는 PRODUCT.md를 보고 정한다.
 
-**함께 읽는 md:** `docs/VOICE.md` — 있으면 맨 끝에 브랜드 요약 섹션(`#brand`)을 붙인다(아래 "브랜드 요약"). `docs/DESIGN.md` — `docs/DESIGN.html`이 있을 때만(= design-brandfit을 거친 뒤) 브랜드 다음에 디자인 요약 섹션(`#design`)을 붙인다(아래 "디자인 요약"). 레퍼런스를 가져다 놓기만 한 DESIGN.md로는 만들지 않는다.
+**함께 읽는 md:** `docs/VOICE.md` — 있으면 맨 끝에 브랜드 요약 섹션(`#brand`)을 붙인다(아래 "브랜드 요약"). `docs/DESIGN.md` — `docs/report/DESIGN.html`이 있을 때만(= design-brandfit을 거친 뒤) 브랜드 다음에 디자인 요약 섹션(`#design`)을 붙인다(아래 "디자인 요약"). 레퍼런스를 가져다 놓기만 한 DESIGN.md로는 만들지 않는다.
 
 **사이드바:** Product가 `is-current`. 목차는 컨셉(`#concept`) · 핵심 기능(`#features`) · 포지셔닝(`#positioning`) · 플랫폼(`#platform`) · 이름(`#naming`), VOICE.md가 있으면 뒤에 브랜드(`#brand`), DESIGN.html이 있으면 그 뒤에 디자인(`#design`).
 
@@ -35,10 +35,10 @@
     <dt>빈틈 · 기회</dt><dd>{경쟁이 못 채운 지점}</dd>
     <dt>차별 포인트</dt><dd>{핵심 1~2개}</dd>
   </dl>
-  <p class="source">근거: <a href="benchmark.html">벤치마크 리서치</a> ({조사일} 조사)</p>
+  <p class="source">근거: <a href="BENCHMARK.html">벤치마크 리서치</a> ({조사일} 조사)</p>
 </div>
 ```
-`docs/benchmark.html`이 아직 없으면 링크 없이 `근거: docs/benchmark.md ({조사일} 조사)`로 적는다. 조사일은 PRODUCT.md 포지셔닝의 근거 줄에서 가져온다.
+`docs/report/BENCHMARK.html`이 아직 없으면 링크 없이 `근거: docs/BENCHMARK.md ({조사일} 조사)`로 적는다. 조사일은 PRODUCT.md 포지셔닝의 근거 줄에서 가져온다.
 
 표지 태그 ③ 작성일은 PRODUCT.md 머리말의 작성일 그대로 쓴다. 다른 단계가 PRODUCT.md를 고쳐도 바꾸지 않는다.
 
@@ -60,7 +60,7 @@
   <p class="source"><a href="VOICE.html">보이스 가이드 자세히 보기 →</a></p>
 </section>
 ```
-`docs/VOICE.html`이 아직 없으면 마지막 줄은 `자세한 내용: docs/VOICE.md`로 적는다.
+`docs/report/VOICE.html`이 아직 없으면 마지막 줄은 `자세한 내용: docs/VOICE.md`로 적는다.
 
 ## 디자인 요약 (DESIGN.html이 있을 때만)
 

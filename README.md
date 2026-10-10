@@ -10,7 +10,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/readme/overview-dark.png">
-  <img alt="Vibe Studio 스킬 구조: 기획 4단계(brainstorming-idea → benchmark-research → brand-voice → design-brandfit) 뒤에, 플로우마다 userflow-generator → build-spec → build-slice → build-check 고리를 돈다" src=".github/readme/overview-light.png">
+  <img alt="Vibe Studio 스킬 구조: 기획 4단계(brainstorming-idea → benchmark-research → brand-voice → design-brandfit) 뒤에, 작업 묶음마다 userflow-generator → build-spec → build-slice → build-check 고리를 돈다" src=".github/readme/overview-light.png">
 </picture>
 
 ## 설치
@@ -39,23 +39,33 @@ Codex app에서는 Plugins에서 추가된 marketplace를 열고 `Vibe Studio`�
 | 순서 | 스킬 | 만드는 파일 (`docs/`) |
 |:---:|---|---|
 | 1 | `brainstorming-idea` | `PRODUCT.md` — 컨셉·문제·타깃·핵심 기능 |
-| 2 | `benchmark-research` | `benchmark.md` + `images/` — 경쟁사 리서치와 핵심 경쟁 화면 캡처. 결론은 `PRODUCT.md`의 포지셔닝 칸에 |
+| 2 | `benchmark-research` | `BENCHMARK.md` + `images/` — 경쟁사 리서치와 핵심 경쟁 화면 캡처. 결론은 `PRODUCT.md`의 포지셔닝 칸에 |
 | 3 | `brand-voice` | `VOICE.md` — 확정 이름·보이스·톤 |
 | 4 | `design-brandfit` | `DESIGN.md` — 가져온 레퍼런스 DESIGN.md를 우리 브랜드로 (레퍼런스는 직접 준비) |
 | 5 | `userflow-generator` | `FLOWS.md` — 첫 방문(온보딩)·다시 오기 두 뼈대 위에 기능 플로우와 기본 장치(로그인 등)를 얹은 플로우 지도 + F1 첫 방문을 화면·상태·예외까지. 개발하면서 다시 불러 플로우를 하나씩 추가·갱신 |
 
-- 단계마다 md와 함께 보기 좋은 html 리포트(`PRODUCT.html` 등)를 만듭니다. 왼쪽 사이드바로 문서 사이를 오갈 수 있습니다.
+- 단계마다 md와 함께 보기 좋은 html 리포트를 `docs/report/`에 만듭니다. `docs/report/index.html`을 열고 왼쪽 사이드바로 문서 사이를 오갈 수 있습니다.
 - 모든 단계는 사용자가 정한 것을 `DECISIONS.md`에 한 줄씩 쌓습니다. 다음 단계는 이 기록을 읽고 이미 정한 것을 다시 묻지 않습니다.
 
 ## 만들기 흐름
 
-만들기는 플로우 하나 단위로 도는 고리입니다. 플로우를 그리고, 쪼개고, 만들고, 써보고, 바뀐 걸 반영한 뒤 다음 플로우로 넘어갑니다.
+만들기는 작업 묶음 하나 단위로 도는 고리입니다. 플로우를 그리고, 쪼개고, 만들고, 써보고, 바뀐 걸 반영한 뒤 다음으로 넘어갑니다. 묶음은 보통 플로우 하나지만, 흉내를 진짜로 바꾸기·스택 옮기기처럼 여러 플로우에 걸치거나 플로우와 무관한 일도 묶음 하나가 됩니다.
 
 | 스킬 | 만드는 것 |
 |---|---|
-| `build-spec` | `docs/SPEC.md` — 스택(프로토타입은 Vite, 실제 기능은 Next.js)·데이터 방식·첫 버전에서 흉내 낼 기능을 정하고, 기획 완료된 플로우 하나를 눌러볼 수 있는 조각 3~6개로 쪼개 조각마다 확인 기준을 붙임. UI 구현된 플로우의 흉내를 진짜로 바꾸는 조각도 여기서 추가 |
-| `build-slice` | 코드와 커밋 — SPEC의 조각 하나를 DESIGN.md의 모습과 VOICE.md의 문구로 만들고, 브라우저에서 확인 기준을 눌러본 뒤 저장. "이상해요"(고치기)와 "되돌려줘"(되돌리기)도 여기서 |
-| `build-check` | `docs/REVIEW.md` + `review/` — 플로우를 사용자처럼 처음부터 끝까지 써보고 막힘·어긋남·위험(키 노출, 보안 설정)만 스크린샷과 함께 정리. 달라진 점은 userflow-generator로 넘김 |
+| `build-spec` | `build/SETUP.md` + `build/{NN-이름}/SPEC.md` — 스택(프로토타입은 Vite, 실제 기능은 Next.js)·데이터 방식·첫 버전에서 흉내 낼 기능을 SETUP에 정하고, 부를 때마다 작업 묶음 폴더를 하나 만들어 눌러볼 수 있는 조각 3~6개와 확인 기준을 적음 |
+| `build-slice` | 코드와 커밋 + `build/LOG.md` — 묶음의 조각 하나를 DESIGN.md의 모습과 VOICE.md의 문구로 만들고, 브라우저에서 확인 기준을 눌러본 뒤 저장. "이상해요"(고치기)와 "되돌려줘"(되돌리기)도 여기서 |
+| `build-check` | `build/{NN-이름}/REVIEW.md` + `shots/` — 묶음의 플로우를 사용자처럼 처음부터 끝까지 써보고 막힘·어긋남·위험(키 노출, 보안 설정)만 스크린샷과 함께 정리. 달라진 점은 userflow-generator로 넘김 |
+
+- 폴더 구조:
+
+  ```
+  docs/
+  ├─ PRODUCT.md  BENCHMARK.md  VOICE.md  DESIGN.md  FLOWS.md  DECISIONS.md
+  ├─ report/     사람이 보는 html (index.html부터)
+  ├─ images/     벤치마크 화면 캡처
+  └─ build/      SETUP.md · LOG.md · 01-f1-first-visit/ · 02-f1-real/ …
+  ```
 
 - 플로우 상태는 `기획 완료` → `UI 구현`(화면은 있고 데이터는 흉내) → `기능 구현`(실제로 동작)으로 올라갑니다. 상태는 userflow-generator가 코드를 읽고 바꿉니다.
 

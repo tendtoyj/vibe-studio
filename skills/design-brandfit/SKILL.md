@@ -11,12 +11,14 @@ description: 다른 곳에서 가져온 레퍼런스 DESIGN.md(디자인 시스�
 
 ## 입력 / 산출물
 
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+
 - **입력:**
   - `docs/DESIGN.md` — 외부에서 가져온 레퍼런스 디자인 시스템 문서. (Google Stitch DESIGN.md 9-섹션 포맷 + 필요 시 Voice/Narrative/Personas/States/Motion 등 확장 섹션을 포함하는 경우가 많다.)
   - `docs/VOICE.md` — brand-voice 스킬 산출물. 확정 서비스명·보이스·톤·금지선이 들어 있다.
 - **산출물:**
   - 같은 `docs/DESIGN.md`. 시각 섹션은 그대로 두고, 불필요 섹션 삭제·frontmatter·폰트/아이콘·브랜드 텍스트 스팬·사용 경계(Usage Boundaries)만 제자리 편집한다(전면 재작성이 아니다).
-  - `docs/DESIGN.html` — DESIGN.md의 색·글꼴·컴포넌트를 실제로 그려 보여주는 견본집. PRODUCT.html에도 디자인 요약이 붙는다.
+  - `docs/report/DESIGN.html` — DESIGN.md의 색·글꼴·컴포넌트를 실제로 그려 보여주는 견본집. PRODUCT.html에도 디자인 요약이 붙는다.
 
 ### 시작 시
 1. `docs/DESIGN.md`가 있는지 확인한다. 없으면 "변환할 레퍼런스 DESIGN.md가 docs/에 없어요. 먼저 레퍼런스를 가져다 두실래요?"라고 안내하고 멈춘다.
@@ -190,11 +192,11 @@ gap 분석·경계 제안·아이콘 추천·폰트 치환을 **한 번에 묶�
 
 DESIGN.md 편집을 적용한 뒤 `<스킬경로>/../../assets/REPORT.md`의 절차대로 html을 만든다. html은 대화 내용이 아니라 **저장된 md 파일만** 보고 채운다.
 
-1. `docs/DESIGN.html`을 만든다(구성: `assets/views/DESIGN.md`). DESIGN.md의 실제 색·글꼴·수치로 견본과 컴포넌트 미리보기를 그린다.
+1. `docs/report/DESIGN.html`을 만든다(구성: `assets/views/DESIGN.md`). DESIGN.md의 실제 색·글꼴·수치로 견본과 컴포넌트 미리보기를 그린다.
 2. 새 html이 생겼으므로 `docs/`의 다른 html 사이드바를 REPORT.md 규칙대로 갱신한다.
-3. `docs/PRODUCT.html`이 있으면 다시 만들어 디자인 요약 섹션을 붙인다(구성: `assets/views/PRODUCT.md`). 곧 통째로 다시 만들어지므로 2번에서 PRODUCT.html은 건너뛰어도 된다.
+3. `docs/report/PRODUCT.html`이 있으면 다시 만들어 디자인 요약 섹션을 붙인다(구성: `assets/views/PRODUCT.md`). 곧 통째로 다시 만들어지므로 2번에서 PRODUCT.html은 건너뛰어도 된다.
 
-보고 끝에 "브라우저로 `docs/DESIGN.html`을 열면 우리 서비스의 색·글꼴·버튼을 실제로 볼 수 있어요"를 덧붙인다.
+보고 끝에 "브라우저로 `docs/report/DESIGN.html`을 열면 우리 서비스의 색·글꼴·버튼을 실제로 볼 수 있어요"를 덧붙인다.
 
 ### 결정 기록 — docs/DECISIONS.md
 

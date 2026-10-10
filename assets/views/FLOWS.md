@@ -1,6 +1,6 @@
 # FLOWS.html 구성
 
-`docs/FLOWS.md` → `docs/FLOWS.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다.
+`docs/FLOWS.md` → `docs/report/FLOWS.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다.
 
 - **함께 읽는 md:** `docs/DESIGN.md`(있으면 화면 카드를 이 디자인으로 그린다), `docs/PRODUCT.md`(서비스 이름, 기준 뷰포트).
 - **판단은 FLOWS.md(와 위 두 파일)에 적힌 것으로만 한다.** 화면 카드 안의 요소와 문구는 FLOWS.md의 스케치·핵심 요소·문구에서만 가져온다. 없는 요소를 지어 넣지 않는다. 다만 **배치는 자유롭게** 그 화면답게 그린다(아래 "화면 그리기").

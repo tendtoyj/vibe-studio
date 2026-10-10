@@ -1,6 +1,6 @@
 # VOICE.html 구성
 
-`docs/VOICE.md` → `docs/VOICE.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다.
+`docs/VOICE.md` → `docs/report/VOICE.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다.
 
 **판단은 VOICE.md에 적힌 것으로만 한다.** 예시 문구도 VOICE.md에 있는 것만 쓰고 새로 짓지 않는다.
 

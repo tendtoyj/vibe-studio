@@ -11,8 +11,10 @@ description: 새로운 서비스 아이디어를 대화로 발굴하고 구체�
 
 ## 산출물
 
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+
 - 작업 폴더의 `docs/PRODUCT.md`를 만든다. `docs/` 폴더가 없으면 만든다.
-- 같은 내용을 보기 좋게 그린 `docs/PRODUCT.html`도 만든다(아래 "PRODUCT.html 만들기" 참고).
+- 같은 내용을 보기 좋게 그린 `docs/report/PRODUCT.html`도 만든다(아래 "PRODUCT.html 만들기" 참고).
 - 이 단계에서 정한 것을 `docs/DECISIONS.md`에 기록한다(아래 "결정 기록" 참고).
 - 별도의 프로젝트 메모리나 폴더 구조는 만들지 않는다. **PRODUCT.md가 곧 기획의 시작점이다.**
 
@@ -196,8 +198,8 @@ DECISIONS.md 형식과 규칙은 아래와 같다. 파일이 없으면 헤더째
 
 ### PRODUCT.html 만들기
 
-PRODUCT.md를 저장한 뒤 `<스킬경로>/../../assets/REPORT.md`의 절차대로 `docs/PRODUCT.html`을 만든다. html은 대화 내용이 아니라 **방금 저장한 PRODUCT.md 파일만** 보고 채운다.
+PRODUCT.md를 저장한 뒤 `<스킬경로>/../../assets/REPORT.md`의 절차대로 `docs/report/PRODUCT.html`을 만든다. html은 대화 내용이 아니라 **방금 저장한 PRODUCT.md 파일만** 보고 채운다.
 
 저장 후, 다음 단계를 짧게 안내한다:
 
-> PRODUCT.md 저장 완료. 브라우저로 `docs/PRODUCT.html`을 열면 한눈에 볼 수 있어요. 다음은 **benchmark-research**로 비슷한 서비스를 조사하면서 우리의 차별점을 잡아볼 수 있어요. 조사 결론은 PRODUCT.md의 "포지셔닝" 칸에 채워져요.
+> PRODUCT.md 저장 완료. 브라우저로 `docs/report/PRODUCT.html`을 열면 한눈에 볼 수 있어요. 다음은 **benchmark-research**로 비슷한 서비스를 조사하면서 우리의 차별점을 잡아볼 수 있어요. 조사 결론은 PRODUCT.md의 "포지셔닝" 칸에 채워져요.

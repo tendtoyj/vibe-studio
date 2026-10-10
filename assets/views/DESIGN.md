@@ -1,6 +1,6 @@
 # DESIGN.html 구성
 
-`docs/DESIGN.md` → `docs/DESIGN.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다.
+`docs/DESIGN.md` → `docs/report/DESIGN.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다.
 
 DESIGN.html은 글로 옮긴 문서가 아니라 **DESIGN.md의 값을 실제로 그려 보여주는 견본집**이다. 견본 부품 안에서는 DESIGN.md의 실제 색·글꼴·수치를 쓴다(REPORT.md 2번 예외).
 

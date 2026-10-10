@@ -1,8 +1,8 @@
-# benchmark.html 구성
+# BENCHMARK.html 구성
 
-`docs/benchmark.md` → `docs/benchmark.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다.
+`docs/BENCHMARK.md` → `docs/report/BENCHMARK.html`. 공통 규칙(`../REPORT.md`)을 먼저 따르고, 이 문서에 맞는 구성은 아래대로 한다.
 
-**판단은 benchmark.md에 적힌 것으로만 한다.** 심화 리서치를 했는지, 캡처가 있는지, 캡처 크기가 무엇인지 모두 benchmark.md를 보고 정한다.
+**판단은 BENCHMARK.md에 적힌 것으로만 한다.** 심화 리서치를 했는지, 캡처가 있는지, 캡처 크기가 무엇인지 모두 BENCHMARK.md를 보고 정한다.
 
 **순서가 md와 다르다.** md는 결론(차별 프레이밍)이 맨 끝이지만, html은 사람이 읽는 리포트라 **결론을 맨 앞에** 둔다.
 
@@ -12,9 +12,9 @@ Benchmark가 `is-current`. 목차는 아래 섹션 중 **실제로 만든 섹션
 
 결론(`#conclusion`) · 경쟁 서비스(`#landscape`) · 화면 캡처(`#screens`) · 기능 비교(`#compare`) · 관찰(`#observations`) · 메시징·가격(`#messaging`, 심화) · 디자인(`#design`, 심화) · 출처(`#sources`)
 
-## 본문 구성 (benchmark.md → html)
+## 본문 구성 (BENCHMARK.md → html)
 
-| benchmark.md | html | section-label / h2 |
+| BENCHMARK.md | html | section-label / h2 |
 |---|---|---|
 | 제목, 한 줄 요약, 머리말 | 표지: `.eyebrow` = `Benchmark`, `h1` = 서비스 이름, `.lead` = 한 줄 요약, `.tag` = ① `조사일 {날짜}` ② `직접 경쟁 {N} · 간접·참고 {M}` ③ 심화 섹션이 하나라도 있으면 `심화 리서치` | — |
 | 우리의 차별 프레이밍 | `#conclusion`: `.callout` 안에 `.big` = 우리의 자리, `.kv` = 빈틈 · 기회 / 차별 포인트. 섹션 앞머리 서술(2~4줄)은 "우리의 자리"와 겹치므로 html에는 넣지 않는다 | `Conclusion` / 우리의 자리 |
@@ -32,12 +32,12 @@ Benchmark가 `is-current`. 목차는 아래 섹션 중 **실제로 만든 섹션
 
 ## 화면 캡처 카드
 
-이미지 경로는 md의 `images/...`를 그대로 쓴다(html이 `docs/`에 있으므로 `docs/images/`를 가리킨다).
+이미지 경로는 md의 `images/...` 앞에 `../`를 붙인다(html은 `docs/report/`에, 이미지는 `docs/images/`에 있다).
 
 ```html
 <div class="shots">
   <figure class="shot">
-    <img src="images/daangn-home.png" alt="당근 · 메인 화면">
+    <img src="../images/daangn-home.png" alt="당근 · 메인 화면">
     <figcaption>
       <strong>당근 · 메인</strong>
       <p>{인상적인 점}</p>

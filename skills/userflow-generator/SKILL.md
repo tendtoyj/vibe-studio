@@ -13,15 +13,18 @@ description: 신규 서비스의 유저 플로우를 docs/FLOWS.md로 관리하�
 
 ## 입력 / 산출물
 
+docs 폴더 구조는 `<스킬경로>/../../assets/LAYOUT.md`를 따른다. 시작할 때 예전 구조로 저장된 문서(`docs/benchmark.md`, `docs/` 바로 아래의 html, `docs/SPEC.md` 등)가 보이면 그 문서의 "예전 구조에서 옮기기"대로 먼저 한 번 묻는다.
+
 - **입력:**
   - `docs/PRODUCT.md` — 핵심 솔루션·**핵심 기능 목록**·포지셔닝·플랫폼. **필수.** 없으면 "먼저 brainstorming-idea를 진행해 주세요"라고 안내한다.
   - `docs/VOICE.md` — 화면 문구의 톤과 실제 문구. 있으면 화면 문구를 여기서 가져온다.
   - `docs/DESIGN.md` — 디자인 시스템. 있으면 FLOWS.html의 화면 카드를 이 디자인으로 그린다.
-  - `docs/benchmark.md` — 경쟁 서비스의 흐름 관찰. 있으면 참고한다.
+  - `docs/BENCHMARK.md` — 경쟁 서비스의 흐름 관찰. 있으면 참고한다.
   - `docs/DECISIONS.md` — 앞 단계에서 이미 정한 것. **여기 있는 건 다시 묻지 않는다.**
+  - `docs/build/LOG.md`, `docs/build/{묶음}/REVIEW.md` — 만들기를 시작한 뒤에만. 바뀐 것을 반영할 때(Step 5) 읽는다.
 - **산출물:**
   - `docs/FLOWS.md` — Flow Map + 화면 목록 + 깊게 그린 플로우들.
-  - `docs/FLOWS.html` — FLOWS.md를 그린 리포트(지도 보드, 디자인을 입힌 화면 카드).
+  - `docs/report/FLOWS.html` — FLOWS.md를 그린 리포트(지도 보드, 디자인을 입힌 화면 카드).
   - `docs/DECISIONS.md`에 이 단계의 결정.
 - 예전 버전이 만든 `docs/userflow.md`가 있고 FLOWS.md가 없으면, "예전 형식의 userflow.md가 있어요. FLOWS.md로 옮길까요?"라고 묻는다. 옮기면 그려져 있던 플로우는 상태를 `기획 완료`로 두고, userflow.md는 지우지 않는다(지울지는 사용자가 정한다).
 
@@ -178,6 +181,7 @@ Step 2~3에서 정한 것을 짧게 요약해 보여주고 내용을 확인받�
 
 개발하다 보면 화면이 합쳐지고, 순서가 바뀌고, 생각 못 한 상태가 생긴다. 이걸 FLOWS.md에 맞춰야 문서와 실제 서비스가 어긋나지 않는다.
 
+- 만들기 기록이 있으면 먼저 읽는다: `docs/build/LOG.md`의 "달라진 점"과, 이 플로우가 `관련 플로우`에 있는 작업 묶음 중 가장 최근 `REVIEW.md`의 "기획과 달라진 점". 거기 있는 것을 바뀐 것 후보로 먼저 보여준다.
 - 무엇이 바뀌었는지 사용자에게 듣는다. 프로젝트에 코드가 있으면 "실제 화면 파일을 보고 다른 점을 찾아볼까요?"라고 제안할 수 있다(사용자가 원할 때만 읽는다).
 - 해당 플로우의 단계·화면을 고치고, **바뀐 화면의 상태와 예외를 Step 3처럼 다시 점검**한다(합쳐진 화면은 두 화면의 상태·예외를 합친다).
 - 고칠 내용을 요약해 보여주고 확인받은 뒤 저장한다.
@@ -210,7 +214,7 @@ Step 2~3에서 정한 것을 짧게 요약해 보여주고 내용을 확인받�
 
 > Vibe Studio · userflow-generator
 > 작성일: <YYYY-MM-DD> · 최종 수정일: <YYYY-MM-DD>
-> 기반: docs/PRODUCT.md, docs/benchmark.md, docs/VOICE.md, docs/DESIGN.md, docs/DECISIONS.md
+> 기반: docs/PRODUCT.md, docs/BENCHMARK.md, docs/VOICE.md, docs/DESIGN.md, docs/DECISIONS.md
 > 플랫폼: <반응형 웹 · 모바일 우선 / 데스크톱 우선>
 
 ## Flow Map
@@ -318,7 +322,7 @@ Step 2~3에서 정한 것을 짧게 요약해 보여주고 내용을 확인받�
 
 ### FLOWS.html 만들기
 
-FLOWS.md를 저장한 뒤 `<스킬경로>/../../assets/REPORT.md`의 절차대로 `docs/FLOWS.html`을 만든다(구성: `assets/views/FLOWS.md`). html은 대화 내용이 아니라 **저장된 md 파일만** 보고 채운다. DESIGN.md가 있으면 화면 카드를 그 디자인으로 그린다. 처음 만드는 html이면 다른 html 사이드바도 REPORT.md 규칙대로 갱신한다.
+FLOWS.md를 저장한 뒤 `<스킬경로>/../../assets/REPORT.md`의 절차대로 `docs/report/FLOWS.html`을 만든다(구성: `assets/views/FLOWS.md`). html은 대화 내용이 아니라 **저장된 md 파일만** 보고 채운다. DESIGN.md가 있으면 화면 카드를 그 디자인으로 그린다. 처음 만드는 html이면 다른 html 사이드바도 REPORT.md 규칙대로 갱신한다.
 
 ### 결정 기록 — docs/DECISIONS.md
 
@@ -345,7 +349,7 @@ FLOWS.md를 저장한 뒤 `<스킬경로>/../../assets/REPORT.md`의 절차대�
 저장 후 짧게 보고한다: 지도의 플로우 수와 상태, 이번에 그린(또는 고친) 플로우, 정한 첫 버전 범위. 그리고:
 
 - **처음 실행 후:**
-  > FLOWS.md 저장 완료. 브라우저로 `docs/FLOWS.html`을 열면 플로우 지도와 화면을 한눈에 볼 수 있어요. 이걸로 기획 단계가 끝났어요. **F1부터 바이브 코딩으로 만들어 보세요.** 만들다가 바뀐 게 생기거나 다음 플로우를 그리고 싶으면 이 스킬을 다시 불러 주세요.
+  > FLOWS.md 저장 완료. 브라우저로 `docs/report/FLOWS.html`을 열면 플로우 지도와 화면을 한눈에 볼 수 있어요. 이걸로 기획 단계가 끝났어요. **F1부터 바이브 코딩으로 만들어 보세요.** 만들다가 바뀐 게 생기거나 다음 플로우를 그리고 싶으면 이 스킬을 다시 불러 주세요.
   F1을 만들고 나면 다음으로 그릴 건 F2 다시 오기라는 것도 한 줄 덧붙인다.
 - **다음 플로우를 그린 뒤:**
   > F{n} 기획 완료. 지도에 남은 후보는 <…>예요. F{n}을 만들어 보고, 바뀐 게 있으면 알려주세요.
