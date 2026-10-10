@@ -1,8 +1,9 @@
 <!doctype html>
 <!--
   Vibe Studio 공통 리포트 틀
-  - <head>와 <style>, 맨 아래 <script>는 그대로 복사한다. 바꾸지 않는다.
-  - 바꾸는 곳은 세 군데뿐: <title>, <aside class="sidebar"> 안의 목록, <main> 안의 내용.
+  - <head>와 <style>, 맨 아래 <script>는 그대로 복사한다. 기본 스타일은 고치지 않는다.
+  - 바꾸는 곳: <title>, <aside class="sidebar"> 안의 목록, <main> 안의 내용.
+  - 필요한 부품이 없으면 <style> 아래에 블록을 하나 더 두고 :root 변수로 새로 만든다 (REPORT.md 2번).
   - 아래 내용은 PRODUCT.md를 그린 예시다(가상의 서비스 "한칸").
 
   컴포넌트 (class 이름)
@@ -12,7 +13,11 @@
   - .grid > .card          카드 그리드 (.card.is-muted = 흐린 카드, 개수가 홀수면 마지막 카드가 한 줄을 다 쓴다)
   - .callout               강조 박스 (.callout.is-empty = 아직 비어 있는 상태)
   - .chips > .chip         칩 목록 (.chip.is-selected = 선택됨)
-  - .kv                    라벨-값 목록 (dl/dt/dd)
+  - .kv                    라벨-값 목록 (dl/dt/dd). .card 안에 넣으면 라벨이 위로 쌓인다
+  - .table-wrap > table    표 (좁은 화면에서는 가로 스크롤). 칸이 비면 "—"
+  - .shots > figure.shot   화면 캡처 카드: img + figcaption(strong 제목 + p 설명 + .source)
+                           (.shots.is-mobile = 세로로 긴 모바일 캡처용, 한 줄에 3장)
+  - ul.refs                출처·링크 목록
 -->
 <html lang="ko">
 <head>
@@ -116,6 +121,36 @@
   .kv dt { color: var(--ink-3); font-size: 13px; padding-top: 1px; }
   .kv dd { margin: 0; color: var(--ink); }
 
+  .card .kv { grid-template-columns: 1fr; gap: 2px; margin-top: 10px; }
+  .card .kv dd { margin-bottom: 8px; font-size: 14px; color: var(--ink-2); }
+
+  /* ---------- table ---------- */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .table-wrap th, .table-wrap td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  .table-wrap thead th { background: var(--surface); color: var(--ink-2); font-size: 13px; font-weight: 600; white-space: nowrap; }
+  .table-wrap tbody th { font-weight: 600; color: var(--ink); white-space: nowrap; }
+  .table-wrap td { color: var(--ink-2); }
+  .table-wrap tr:last-child > * { border-bottom: 0; }
+  .table-wrap a { color: var(--accent); text-decoration: none; }
+  .table-wrap + .sub { margin-top: 28px; }
+
+  /* ---------- shots ---------- */
+  .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .shots.is-mobile { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .shot { margin: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--bg); }
+  .shot img { display: block; width: 100%; height: auto; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .shot figcaption { padding: 14px 16px; }
+  .shot figcaption strong { display: block; font-size: 14px; }
+  .shot figcaption p { margin: 4px 0 0; font-size: 13px; color: var(--ink-2); }
+  .shot .source { margin-top: 8px; }
+  .source a { color: inherit; }
+
+  /* ---------- refs ---------- */
+  .refs { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
+  .refs li { margin-bottom: 6px; }
+  .refs a { color: var(--accent); text-decoration: none; word-break: break-all; }
+
   /* ---------- chips ---------- */
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; color: var(--ink-2); }
@@ -138,6 +173,8 @@
     .flow { grid-template-columns: 1fr; gap: 20px; }
     .flow-step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -20px; transform: translateX(-50%); }
     .grid { grid-template-columns: 1fr; }
+    .shots { grid-template-columns: 1fr; }
+    .shots.is-mobile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .kv { grid-template-columns: 1fr; gap: 2px; }
     .kv dd { margin-bottom: 10px; }
   }
@@ -146,6 +183,7 @@
     .sidebar { display: none; }
     main { max-width: none; padding: 0; }
     .section { break-inside: avoid; }
+    .shot, .card { break-inside: avoid; }
   }
 </style>
 </head>
@@ -167,10 +205,9 @@
         </ul>
       </li>
       <li class="is-pending"><a href="benchmark.html"><span class="step">2</span>Benchmark</a></li>
-      <li class="is-pending"><a href="userflow.html"><span class="step">3</span>User Flow</a></li>
-      <li class="is-pending"><a href="VOICE.html"><span class="step">4</span>Voice</a></li>
-      <li class="is-pending"><a href="DESIGN.html"><span class="step">5</span>Design</a></li>
-      <li class="is-pending"><a href="PRD.html"><span class="step">6</span>PRD</a></li>
+      <li class="is-pending"><a href="VOICE.html"><span class="step">3</span>Voice</a></li>
+      <li class="is-pending"><a href="DESIGN.html"><span class="step">4</span>Design</a></li>
+      <li class="is-pending"><a href="userflow.html"><span class="step">5</span>User Flow</a></li>
     </ul>
   </aside>
 

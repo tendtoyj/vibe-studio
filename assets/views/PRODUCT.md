@@ -4,6 +4,8 @@
 
 **판단은 PRODUCT.md에 적힌 것으로만 한다.** 예: 포지셔닝이 비었는지, 이름이 확정됐는지는 PRODUCT.md를 보고 정한다.
 
+**함께 읽는 md:** `docs/VOICE.md`, `docs/DESIGN.md` — 있으면 요약 카드(브랜드·디자인 섹션)를 붙인다. 구체 구성은 brand-voice·design-brandfit을 연결할 때 이 문서에 추가한다. 지금은 두 파일이 있어도 섹션을 만들지 않는다.
+
 **사이드바:** Product가 `is-current`. 목차는 컨셉(`#concept`) · 핵심 기능(`#features`) · 포지셔닝(`#positioning`) · 플랫폼(`#platform`) · 이름(`#naming`).
 
 **본문 구성 (PRODUCT.md → html)** — 섹션 제목(`h2`)은 템플릿 것을 그대로 쓴다.

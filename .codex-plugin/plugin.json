@@ -1,7 +1,7 @@
 {
   "name": "vibe-studio",
   "version": "0.1.0",
-  "description": "Vibe Studio skill pack for planning a new app or web product: idea, benchmark research, user flows, brand voice, design brand fitting, and PRD — written as PRODUCT.md, VOICE.md, DESIGN.md, PRD.md, with decisions logged in DECISIONS.md.",
+  "description": "Vibe Studio skill pack for planning a new app or web product: idea, benchmark research, brand voice, design brand fitting, and user flows — written as PRODUCT.md, benchmark.md, VOICE.md, DESIGN.md, userflow.md with an HTML report for each, and decisions logged in DECISIONS.md.",
   "author": {
     "name": "tendtoyj",
     "email": "tendtoyj@gmail.com"
@@ -9,16 +9,16 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Vibe Studio",
-    "shortDescription": "Plan new app and web products from idea to PRD.",
-    "longDescription": "Vibe Studio bundles a staged product planning workflow for new app and web ideas: brainstorming, benchmark research, user-flow generation, brand voice, design-system brand fitting, and PRD synthesis. Outputs follow the PRODUCT.md / VOICE.md / DESIGN.md convention, and every step logs user decisions to DECISIONS.md.",
+    "shortDescription": "Plan new app and web products from idea to user flows.",
+    "longDescription": "Vibe Studio bundles a staged product planning workflow for new app and web ideas: brainstorming, benchmark research with competitor screen captures, brand voice, design-system brand fitting, and user-flow generation. Every step writes a markdown source file plus a readable HTML report, and logs user decisions to DECISIONS.md.",
     "developerName": "tendtoyj",
     "category": "Productivity",
     "capabilities": [
       "Product planning",
       "UX research",
-      "User flows",
       "Brand voice",
-      "PRD generation"
+      "Design system",
+      "User flows"
     ],
     "websiteURL": "https://github.com/tendtoyj/vibe-studio",
     "brandColor": "#2F6BFF",
@@ -32,7 +32,7 @@
     "product",
     "planning",
     "brainstorming",
-    "prd",
+    "user-flow",
     "vibe-coding"
   ]
 }
