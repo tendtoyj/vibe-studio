@@ -1,6 +1,6 @@
 # vibe-studio
 
-바이브 코딩으로 신규 서비스를 기획하는 Claude Code / Codex 플러그인.
+바이브 코딩으로 신규 서비스를 기획하고 만드는 Claude Code / Codex 플러그인.
 
 > 기존 [vibe-ux-skills](https://github.com/tendtoyj/vibe-ux-skills)(vibe-ux · vibe-build)의 통합 개편 버전입니다.
 
@@ -40,9 +40,27 @@ Codex app에서는 Plugins에서 추가된 marketplace를 열고 `Vibe Studio`�
 
 ## 만들기 흐름
 
-| 스킬 | 만드는 파일 (`docs/`) |
+만들기는 플로우 하나 단위로 도는 고리입니다. 플로우를 그리고, 쪼개고, 만들고, 써보고, 바뀐 걸 반영한 뒤 다음 플로우로 넘어갑니다.
+
+```
+┌→ userflow-generator (플로우 그리기 · 바뀐 것 반영)
+│      ↓
+│  build-spec   (그 플로우를 조각으로 쪼개기)
+│      ↓
+│  build-slice  (조각 하나씩 만들기 · 반복)
+│      ↓
+│  build-check  (플로우를 처음부터 끝까지 써보기)
+└──────┘
+```
+
+| 스킬 | 만드는 것 |
 |---|---|
-| `build-spec` | `SPEC.md` — 스택·데이터 방식·첫 버전에서 흉내 낼 기능을 정하고, 기획 완료된 플로우 하나를 눌러볼 수 있는 조각 3~6개로 쪼개 조각마다 확인 기준을 붙임. 플로우를 새로 만들 때마다 다시 부름 |
+| `build-spec` | `docs/SPEC.md` — 스택(프로토타입은 Vite, 실제 기능은 Next.js)·데이터 방식·첫 버전에서 흉내 낼 기능을 정하고, 기획 완료된 플로우 하나를 눌러볼 수 있는 조각 3~6개로 쪼개 조각마다 확인 기준을 붙임. UI 구현된 플로우의 흉내를 진짜로 바꾸는 조각도 여기서 추가 |
+| `build-slice` | 코드와 커밋 — SPEC의 조각 하나를 DESIGN.md의 모습과 VOICE.md의 문구로 만들고, 브라우저에서 확인 기준을 눌러본 뒤 저장. "이상해요"(고치기)와 "되돌려줘"(되돌리기)도 여기서 |
+| `build-check` | `docs/REVIEW.md` + `review/` — 플로우를 사용자처럼 처음부터 끝까지 써보고 막힘·어긋남·위험(키 노출, 보안 설정)만 스크린샷과 함께 정리. 달라진 점은 userflow-generator로 넘김 |
+
+- 플로우 상태는 `기획 완료` → `UI 구현`(화면은 있고 데이터는 흉내) → `기능 구현`(실제로 동작)으로 올라갑니다. 상태는 userflow-generator가 코드를 읽고 바꿉니다.
+- 화면 확인은 Claude Code 데스크톱의 브라우저 창을 쓰면 가장 편합니다(build-slice가 첫 조각에서 `.claude/launch.json`을 만듭니다). 없으면 다른 브라우저 도구를 쓰거나, 체크리스트를 받아 직접 눌러봅니다.
 
 ## 사용
 
@@ -55,9 +73,11 @@ Claude Code에서는 네임스페이스와 함께 호출합니다.
 /vibe-studio:design-brandfit
 /vibe-studio:userflow-generator
 /vibe-studio:build-spec
+/vibe-studio:build-slice
+/vibe-studio:build-check
 ```
 
-Codex에서는 `$brainstorming-idea`처럼 `$`로 개별 스킬을 부르거나, "서비스 아이디어 잡아줘", "유저 플로우 그려줘", "이제 만들어보자"처럼 자연어로 요청하면 해당 스킬이 트리거됩니다.
+Codex에서는 `$brainstorming-idea`처럼 `$`로 개별 스킬을 부르거나, "서비스 아이디어 잡아줘", "유저 플로우 그려줘", "이제 만들어보자", "다음 조각 만들어줘", "이상해요", "다 만들었어 써봐줘"처럼 자연어로 요청하면 해당 스킬이 트리거됩니다.
 
 ## 라이선스
 

@@ -1,7 +1,7 @@
 {
   "name": "vibe-studio",
   "version": "0.1.0",
-  "description": "Vibe Studio skill pack for planning a new app or web product: idea, benchmark research, brand voice, design brand fitting, user flows, and build specs — written as PRODUCT.md, benchmark.md, VOICE.md, DESIGN.md, FLOWS.md, SPEC.md with an HTML report for each, and decisions logged in DECISIONS.md.",
+  "description": "Vibe Studio skill pack for planning and building a new app or web product: idea, benchmark research, brand voice, design brand fitting, and user flows — written as PRODUCT.md, benchmark.md, VOICE.md, DESIGN.md, FLOWS.md with an HTML report for each and decisions logged in DECISIONS.md — then a per-flow build loop: build-spec (SPEC.md), build-slice (build and verify one slice at a time), and build-check (end-to-end QA in REVIEW.md).",
   "author": {
     "name": "tendtoyj",
     "email": "tendtoyj@gmail.com"
@@ -9,8 +9,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Vibe Studio",
-    "shortDescription": "Plan new app and web products from idea to build-ready specs.",
-    "longDescription": "Vibe Studio bundles a staged product planning workflow for new app and web ideas: brainstorming, benchmark research with competitor screen captures, brand voice, design-system brand fitting, and user-flow generation, then build-spec slices each flow into small, checkable build pieces. Every step writes a markdown source file plus a readable HTML report, and logs user decisions to DECISIONS.md.",
+    "shortDescription": "Plan and build new app and web products, one user flow at a time.",
+    "longDescription": "Vibe Studio bundles a staged product planning workflow for new app and web ideas: brainstorming, benchmark research with competitor screen captures, brand voice, design-system brand fitting, and user-flow generation, each writing a markdown source file plus a readable HTML report and logging decisions to DECISIONS.md. Building then runs as a loop per flow: build-spec slices the flow into small, checkable pieces in SPEC.md; build-slice builds one piece at a time with the design and voice, checks it in the browser, and commits; build-check walks the whole flow like a first-time user and records blockers, mismatches, and security risks in REVIEW.md.",
     "developerName": "tendtoyj",
     "category": "Productivity",
     "capabilities": [
@@ -19,7 +19,9 @@
       "Brand voice",
       "Design system",
       "User flows",
-      "Build specs"
+      "Build specs",
+      "Build slices",
+      "End-to-end QA"
     ],
     "websiteURL": "https://github.com/tendtoyj/vibe-studio",
     "brandColor": "#2F6BFF",
@@ -35,6 +37,8 @@
     "brainstorming",
     "user-flow",
     "spec",
+    "build",
+    "qa",
     "vibe-coding"
   ]
 }
