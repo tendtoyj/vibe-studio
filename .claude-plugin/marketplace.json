@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Vibe Studio — 바이브 코딩으로 신규 서비스를 기획하고 만드는 Claude Code 플러그인 마켓플레이스",
-    "version": "0.3.4"
+    "version": "0.3.5"
   },
   "plugins": [
     {
