@@ -37,7 +37,7 @@ Benchmark가 `is-current`. 목차는 아래 섹션 중 **실제로 만든 섹션
 ```html
 <div class="shots">
   <figure class="shot">
-    <img src="images/daangn-home.png" alt="당근 · 메인 화면" loading="lazy">
+    <img src="images/daangn-home.png" alt="당근 · 메인 화면">
     <figcaption>
       <strong>당근 · 메인</strong>
       <p>{인상적인 점}</p>

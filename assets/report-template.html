@@ -39,7 +39,8 @@
                            .board-col.is-done = 완료 계열 강조
   - .phones > .phone       화면 카드를 화살표로 이어 늘어놓는 줄(넘치면 다음 줄로). .phones.is-desktop = 넓은 화면
                            .phone = .phone-step(단계 번호·화면 이름) + .phone-screen(.ds-* 부품과 .ph-* 요소) + .phone-note(주 행동 → 다음)
-                           .phone-screen 안 요소: .ph-title, .ph-label, .ph-text, .ph-img(.is-map), .ph-list > .ph-item, .ph-chips > .ds-chip(.is-on), .ph-sheet, .ph-bar
+                           .phone-screen 안은 화면마다 직접 그린다(views/FLOWS.md). 필요하면 쓸 수 있는 보조 요소:
+                           .ph-title, .ph-label, .ph-text, .ph-img(.is-map), .ph-list > .ph-item, .ph-chips > .ds-chip(.is-on), .ph-sheet, .ph-bar
                            디자인 값은 .phones에 style="--ds-…" 로 넣는다 (DESIGN.html의 .ds-preview와 같은 변수)
 -->
 <html lang="ko">
