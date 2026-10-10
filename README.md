@@ -4,6 +4,15 @@
 
 > 기존 [vibe-ux-skills](https://github.com/tendtoyj/vibe-ux-skills)(vibe-ux · vibe-build)의 통합 개편 버전입니다.
 
+## 한눈에 보기
+
+기획 스킬로 서비스의 뼈대를 한 번 잡고, 그다음부터는 플로우 하나마다 만들기 고리를 한 바퀴씩 돕니다.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/readme/overview-dark.png">
+  <img alt="Vibe Studio 스킬 구조: 기획 4단계(brainstorming-idea → benchmark-research → brand-voice → design-brandfit) 뒤에, 플로우마다 userflow-generator → build-spec → build-slice → build-check 고리를 돈다" src=".github/readme/overview-light.png">
+</picture>
+
 ## 설치
 
 ### Claude Code
@@ -42,17 +51,6 @@ Codex app에서는 Plugins에서 추가된 marketplace를 열고 `Vibe Studio`�
 
 만들기는 플로우 하나 단위로 도는 고리입니다. 플로우를 그리고, 쪼개고, 만들고, 써보고, 바뀐 걸 반영한 뒤 다음 플로우로 넘어갑니다.
 
-```
-┌→ userflow-generator (플로우 그리기 · 바뀐 것 반영)
-│      ↓
-│  build-spec   (그 플로우를 조각으로 쪼개기)
-│      ↓
-│  build-slice  (조각 하나씩 만들기 · 반복)
-│      ↓
-│  build-check  (플로우를 처음부터 끝까지 써보기)
-└──────┘
-```
-
 | 스킬 | 만드는 것 |
 |---|---|
 | `build-spec` | `docs/SPEC.md` — 스택(프로토타입은 Vite, 실제 기능은 Next.js)·데이터 방식·첫 버전에서 흉내 낼 기능을 정하고, 기획 완료된 플로우 하나를 눌러볼 수 있는 조각 3~6개로 쪼개 조각마다 확인 기준을 붙임. UI 구현된 플로우의 흉내를 진짜로 바꾸는 조각도 여기서 추가 |
@@ -60,6 +58,7 @@ Codex app에서는 Plugins에서 추가된 marketplace를 열고 `Vibe Studio`�
 | `build-check` | `docs/REVIEW.md` + `review/` — 플로우를 사용자처럼 처음부터 끝까지 써보고 막힘·어긋남·위험(키 노출, 보안 설정)만 스크린샷과 함께 정리. 달라진 점은 userflow-generator로 넘김 |
 
 - 플로우 상태는 `기획 완료` → `UI 구현`(화면은 있고 데이터는 흉내) → `기능 구현`(실제로 동작)으로 올라갑니다. 상태는 userflow-generator가 코드를 읽고 바꿉니다.
+
 - 화면 확인은 Claude Code 데스크톱의 브라우저 창을 쓰면 가장 편합니다(build-slice가 첫 조각에서 `.claude/launch.json`을 만듭니다). 없으면 다른 브라우저 도구를 쓰거나, 체크리스트를 받아 직접 눌러봅니다.
 
 ## 사용

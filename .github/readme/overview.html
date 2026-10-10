@@ -1,0 +1,102 @@
+<!doctype html>
+<!-- README 다이어그램 원본. 고친 뒤 .github/readme/render.sh 로 overview-light.png / overview-dark.png 를 다시 만든다. -->
+<html lang="ko">
+<meta charset="utf-8">
+<title>Vibe Studio overview</title>
+<style>
+  :root {
+    --bg: #ffffff; --surface: #f7f7f8; --line: #e7e7ea;
+    --ink: #17171a; --ink-2: #4b4b55; --ink-3: #8a8a96;
+    --accent: #2f6bff; --accent-soft: #eef3ff;
+    --good: #12805c; --good-soft: #e9f6f0;
+    --radius: 12px;
+  }
+  .dark {
+    --bg: #0d1117; --surface: #161b22; --line: #30363d;
+    --ink: #e6edf3; --ink-2: #b1bac4; --ink-3: #7d8590;
+    --accent: #5b8cff; --accent-soft: #15223f;
+    --good: #3fb984; --good-soft: #10291f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    width: 1040px; padding: 36px 40px 40px; background: var(--bg); color: var(--ink);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    -webkit-font-smoothing: antialiased; letter-spacing: -0.01em;
+  }
+  .label { font-size: 12px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.06em; margin: 0 0 4px; }
+  h2 { font-size: 20px; margin: 0 0 16px; letter-spacing: -0.02em; }
+  h2 span { font-size: 14px; font-weight: 500; color: var(--ink-3); margin-left: 8px; letter-spacing: -0.01em; }
+
+  .row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; position: relative; }
+  .card { position: relative; background: var(--surface); border-radius: var(--radius); padding: 16px 16px 14px; }
+  .row .card:not(:last-child)::after {
+    content: "→"; position: absolute; right: -24px; top: 50%; transform: translateY(-50%);
+    color: var(--ink-3); font-size: 16px;
+  }
+  .num { font-size: 11px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+  .name { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13.5px; font-weight: 600; margin: 4px 0 4px; letter-spacing: -0.02em; }
+  .what { margin: 0 0 12px; font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+  .out { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; color: var(--ink-2); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; }
+  .repeat { position: absolute; top: 14px; right: 14px; font-size: 11px; font-weight: 600; color: var(--good); background: var(--good-soft); border-radius: 999px; padding: 2px 8px; }
+
+  .note { margin-top: 12px; display: flex; justify-content: flex-end; }
+  .note p { margin: 0; font-size: 12px; color: var(--ink-3); border: 1px dashed var(--line); border-radius: 8px; padding: 5px 10px; }
+
+  .down { height: 44px; display: flex; align-items: center; justify-content: center; color: var(--ink-3); font-size: 16px; }
+
+  .loop { position: relative; padding-bottom: 50px; }
+  .back {
+    position: absolute; left: 12.5%; right: 12.5%; bottom: 10px; height: 34px;
+    border: 1.5px solid var(--ink-3); border-top: 0; border-radius: 0 0 14px 14px; opacity: .55;
+  }
+  .back-tip { position: absolute; left: calc(12.5% - 5px); bottom: 40px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 7px solid var(--ink-3); opacity: .8; }
+  .back-label { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); background: var(--bg); padding: 0 12px; font-size: 12.5px; color: var(--ink-2); }
+
+  .status { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 14px; }
+  .status .label { margin: 0 6px 0 0; }
+  .pill { font-size: 13px; font-weight: 600; border-radius: 999px; padding: 5px 12px; background: var(--surface); }
+  .pill small { font-weight: 400; color: var(--ink-3); margin-left: 6px; }
+  .pill.is-last { background: var(--good-soft); color: var(--good); }
+  .pill.is-last small { color: var(--good); opacity: .8; }
+  .arrow { color: var(--ink-3); font-size: 14px; }
+
+  .foot { margin: 18px 0 0; font-size: 12.5px; color: var(--ink-3); }
+  .foot code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--ink-2); }
+</style>
+<body>
+  <script>if (location.hash === "#dark") document.documentElement.classList.add("dark");</script>
+  <p class="label">STAGE 1</p>
+  <h2>기획<span>처음 한 번, 순서대로</span></h2>
+  <div class="row">
+    <div class="card"><span class="num">01</span><span class="name">brainstorming-idea</span><p class="what">아이디어를 컨셉으로</p><span class="out">PRODUCT.md</span></div>
+    <div class="card"><span class="num">02</span><span class="name">benchmark-research</span><p class="what">경쟁 서비스 조사·화면 캡처</p><span class="out">benchmark.md</span></div>
+    <div class="card"><span class="num">03</span><span class="name">brand-voice</span><p class="what">이름·말투 정하기</p><span class="out">VOICE.md</span></div>
+    <div class="card"><span class="num">04</span><span class="name">design-brandfit</span><p class="what">가져온 디자인을 우리 브랜드로</p><span class="out">DESIGN.md</span></div>
+  </div>
+  <div class="note"><p>레퍼런스 DESIGN.md는 직접 준비</p></div>
+
+  <div class="down">↓</div>
+
+  <p class="label">STAGE 2</p>
+  <h2>만들기<span>플로우 하나마다 한 바퀴</span></h2>
+  <div class="loop">
+    <div class="row">
+      <div class="card"><span class="num">05</span><span class="name">userflow-generator</span><p class="what">플로우 그리기·바뀐 점 반영</p><span class="out">FLOWS.md</span></div>
+      <div class="card"><span class="num">06</span><span class="name">build-spec</span><p class="what">플로우를 조각 3~6개로</p><span class="out">SPEC.md</span></div>
+      <div class="card"><span class="repeat">↻ 조각마다</span><span class="num">07</span><span class="name">build-slice</span><p class="what">조각 하나 만들고 눌러보기</p><span class="out">코드·커밋</span></div>
+      <div class="card"><span class="num">08</span><span class="name">build-check</span><p class="what">처음부터 끝까지 써보기</p><span class="out">REVIEW.md</span></div>
+    </div>
+    <div class="back"></div><div class="back-tip"></div>
+    <span class="back-label">바뀐 점 반영하고 다음 플로우로</span>
+  </div>
+
+  <div class="status">
+    <p class="label">FLOW STATUS</p>
+    <span class="pill">기획 완료<small>FLOWS에 그려짐</small></span><span class="arrow">→</span>
+    <span class="pill">UI 구현<small>데이터는 흉내</small></span><span class="arrow">→</span>
+    <span class="pill is-last">기능 구현<small>실제로 동작</small></span>
+  </div>
+  <p class="foot">모든 단계가 정한 것을 <code>DECISIONS.md</code>에 쌓고, md마다 보기 좋은 html 리포트를 함께 만듭니다.</p>
+</body>
+</html>
