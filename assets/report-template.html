@@ -1,9 +1,9 @@
 <!doctype html>
 <!--
   Vibe Studio 공통 리포트 틀
-  - <head>와 <style>, 맨 아래 <script>는 그대로 복사한다. 기본 스타일은 고치지 않는다.
-  - 바꾸는 곳: <title>, <aside class="sidebar"> 안의 목록, <main> 안의 내용.
-  - 필요한 부품이 없으면 <style> 아래에 블록을 하나 더 두고 :root 변수로 새로 만든다 (REPORT.md 2번).
+  - head와 style, 맨 아래 script는 그대로 복사한다. 기본 스타일은 고치지 않는다.
+  - 바꾸는 곳: title, aside class='sidebar' 안의 목록, main 안의 내용.
+  - 필요한 부품이 없으면 style 아래에 블록을 하나 더 두고 :root 변수로 새로 만든다 (REPORT.md 2번).
   - 아래 내용은 PRODUCT.md를 그린 예시다(가상의 서비스 "한칸").
 
   컴포넌트 (class 이름)
@@ -32,6 +32,15 @@
   - .ds-preview            컴포넌트 미리보기 영역. style="--ds-…: 값" 로 디자인 값을 넣으면 안의
                            .ds-btn(.is-secondary) / .ds-card / .ds-input / .ds-chip 이 그 값으로 그려진다
   - i.dot                  표 안의 작은 색 점 (style="background:#hex")
+
+  플로우 부품 (FLOWS.html)
+  - .board > .board-col    상태별 보드: h3(상태 이름 + span.count) + .board-item 여러 개
+                           .board-item = span.flow-id + strong(이름) + p(사용자의 한마디). a로 감싸면 그 플로우로 이동
+                           .board-col.is-done = 완료 계열 강조
+  - .phones > .phone       화면 카드를 화살표로 이어 늘어놓는 줄(넘치면 다음 줄로). .phones.is-desktop = 넓은 화면
+                           .phone = .phone-step(단계 번호·화면 이름) + .phone-screen(.ds-* 부품과 .ph-* 요소) + .phone-note(주 행동 → 다음)
+                           .phone-screen 안 요소: .ph-title, .ph-label, .ph-text, .ph-img(.is-map), .ph-list > .ph-item, .ph-chips > .ds-chip(.is-on), .ph-sheet, .ph-bar
+                           디자인 값은 .phones에 style="--ds-…" 로 넣는다 (DESIGN.html의 .ds-preview와 같은 변수)
 -->
 <html lang="ko">
 <head>
@@ -68,6 +77,7 @@
 
   /* ---------- layout ---------- */
   .layout { display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); min-height: 100vh; }
+  main { min-width: 0; }
   .sidebar {
     position: sticky; top: 0; height: 100vh; overflow-y: auto;
     border-right: 1px solid var(--line); padding: 28px 20px;
@@ -247,8 +257,53 @@
     border-radius: var(--ds-input-radius, var(--ds-radius, 10px)); border: 1px solid var(--ds-border, var(--line));
     background: var(--ds-bg, #fff); color: var(--ds-text, var(--ink));
   }
-  .ds-chip { font-size: 13px; padding: 6px 12px; border-radius: 999px; background: var(--ds-primary-soft, color-mix(in srgb, var(--ds-primary, var(--accent)) 12%, #fff)); color: var(--ds-primary, var(--accent)); }
+  .ds-chip { font-size: 13px; padding: 6px 12px; border-radius: 999px; background: var(--ds-surface, #fff); border: 1px solid var(--ds-border, var(--line)); color: var(--ds-text, var(--ink)); }
+  .ds-chip.is-on { border-color: transparent; background: var(--ds-primary-soft, color-mix(in srgb, var(--ds-primary, var(--accent)) 12%, #fff)); color: var(--ds-primary, var(--accent)); }
   .preview-label { font-size: 12px; color: var(--ink-3); margin: 0 0 8px; font-family: "Pretendard Variable", Pretendard, sans-serif; }
+
+  /* ---------- flow board ---------- */
+  .board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .board-col { background: var(--surface); border-radius: var(--radius); padding: 12px; min-height: 96px; }
+  .board-col h3 { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-2); margin: 0 0 10px; }
+  .board-col h3 .count { color: var(--ink-3); font-weight: 500; }
+  .board-col.is-done h3 { color: var(--good); }
+  .board-item { display: block; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; text-decoration: none; color: inherit; }
+  a.board-item:hover { border-color: var(--accent); }
+  .board-item .flow-id { font-size: 11px; font-weight: 700; color: var(--accent); }
+  .board-item strong { display: block; font-size: 14px; margin-top: 2px; }
+  .board-item p { margin: 4px 0 0; font-size: 12px; color: var(--ink-3); }
+
+  /* ---------- phones ---------- */
+  .phones { display: flex; flex-wrap: wrap; gap: 28px 34px; padding: 4px; font-family: var(--ds-font, inherit); }
+  .phone { position: relative; flex: 0 0 196px; }
+  .phones.is-desktop .phone { flex-basis: 360px; }
+  .phone:not(:last-child)::after { content: "→"; position: absolute; right: -25px; top: 200px; color: var(--ink-3); font-size: 16px; font-family: "Pretendard Variable", Pretendard, sans-serif; }
+  .phone-step { font-size: 12px; color: var(--ink-3); margin-bottom: 6px; font-family: "Pretendard Variable", Pretendard, sans-serif; }
+  .phone-step strong { color: var(--ink); margin-left: 4px; }
+  .phone-screen {
+    position: relative; display: flex; flex-direction: column; gap: 10px; min-height: 420px;
+    border: 1px solid var(--line); border-radius: 24px; padding: 18px 14px 0;
+    background: var(--ds-bg, #fff); color: var(--ds-text, var(--ink)); box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .phones.is-desktop .phone-screen { min-height: 240px; border-radius: 12px; }
+  .phone-screen .ds-btn { font-size: 13px; padding: 9px 14px; align-self: flex-start; }
+  .phone-screen .ds-card { padding: 12px; max-width: none; }
+  .phone-screen .ds-card h4 { font-size: 14px; }
+  .phone-screen .ds-card p { font-size: 12px; }
+  .phone-screen .ds-input { font-size: 13px; padding: 9px 11px; max-width: none; }
+  .phone-screen p { margin: 0; }
+  .phone-screen p.ph-title { font-size: 17px; font-weight: 700; line-height: 1.35; color: var(--ds-text, var(--ink)); }
+  .phone-screen p.ph-label { font-size: 12px; font-weight: 600; color: var(--ds-text, var(--ink)); margin-top: 4px; }
+  .phone-screen p.ph-text { font-size: 12px; line-height: 1.5; color: var(--ds-muted, var(--ink-2)); }
+  .ph-img { display: flex; align-items: center; justify-content: center; height: 88px; border-radius: var(--ds-radius, 10px); background: var(--ds-surface-alt, #eeeef0); font-size: 11px; color: var(--ds-muted, var(--ink-3)); }
+  .ph-img.is-map { height: 140px; background-image: linear-gradient(var(--ds-border, #dcdce0) 1px, transparent 1px), linear-gradient(90deg, var(--ds-border, #dcdce0) 1px, transparent 1px); background-size: 22px 22px; }
+  .ph-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ph-sheet { margin: auto -14px 0; padding: 16px 14px 18px; border-radius: 18px 18px 0 0; background: var(--ds-surface, #fff); border-top: 1px solid var(--ds-border, var(--line)); box-shadow: 0 -6px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; gap: 8px; }
+  .ph-list { display: grid; gap: 8px; }
+  .ph-item { display: flex; gap: 10px; align-items: center; font-size: 12px; padding: 8px; border: 1px solid var(--ds-border, var(--line)); border-radius: var(--ds-radius, 10px); }
+  .ph-item::before { content: ""; flex: 0 0 32px; height: 40px; border-radius: 6px; background: var(--ds-surface-alt, #eeeef0); }
+  .ph-bar { margin-top: auto; display: flex; justify-content: space-around; border-top: 1px solid var(--ds-border, var(--line)); padding: 10px 0 14px; font-size: 11px; color: var(--ds-muted, var(--ink-3)); }
+  .phone-note { font-size: 12px; color: var(--ink-2); margin-top: 8px; font-family: "Pretendard Variable", Pretendard, sans-serif; }
 
   /* ---------- chips ---------- */
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -260,7 +315,7 @@
 
   /* ---------- responsive ---------- */
   @media (max-width: 860px) {
-    .layout { grid-template-columns: 1fr; }
+    .layout { grid-template-columns: minmax(0, 1fr); }
     .sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 16px; }
     .nav { margin-top: 12px; display: flex; gap: 4px; overflow-x: auto; }
     .nav-group, .toc { display: none; }
@@ -276,6 +331,7 @@
     .compare { grid-template-columns: 1fr; }
     .type-row { grid-template-columns: 1fr; gap: 6px; }
     .ds-preview { padding: 18px; }
+    .board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .spectrum-row { grid-template-columns: 72px minmax(0, 1fr) 72px; gap: 10px; }
     .shots.is-mobile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .kv { grid-template-columns: 1fr; gap: 2px; }
@@ -310,7 +366,7 @@
       <li class="is-pending"><a href="benchmark.html"><span class="step">2</span>Benchmark</a></li>
       <li class="is-pending"><a href="VOICE.html"><span class="step">3</span>Voice</a></li>
       <li class="is-pending"><a href="DESIGN.html"><span class="step">4</span>Design</a></li>
-      <li class="is-pending"><a href="userflow.html"><span class="step">5</span>User Flow</a></li>
+      <li class="is-pending"><a href="FLOWS.html"><span class="step">5</span>Flows</a></li>
     </ul>
   </aside>
 

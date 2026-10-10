@@ -63,6 +63,7 @@ DESIGN.md에서 찾은 값만 `--ds-…` 변수로 넣는다. 못 찾은 변수�
 |---|---|
 | `--ds-font` | 본문 글꼴 패밀리 (스택 포함) |
 | `--ds-bg` / `--ds-surface` / `--ds-border` | 배경 / 카드·표면 / 테두리 색 |
+| `--ds-surface-alt` | 이미지 자리·썸네일에 쓸 옅은 회색 면 (없으면 빼둔다) |
 | `--ds-text` / `--ds-muted` | 기본 글자 / 보조 글자 색 |
 | `--ds-secondary-border` | 보조 버튼 테두리 색 (없으면 `--ds-border`) |
 | `--ds-primary` / `--ds-on-primary` / `--ds-primary-soft` | 주요 버튼 색 / 그 위 글자 색 / 옅은 강조 배경(없으면 빼둔다 — 주요 색을 옅게 섞어 자동으로 만든다) |
@@ -85,7 +86,7 @@ DESIGN.md에서 찾은 값만 `--ds-…` 변수로 넣는다. 못 찾은 변수�
   </div>
   <div>
     <p class="preview-label">입력창 · 칩</p>
-    <div class="ds-row"><input class="ds-input" placeholder="{입력 안내 문구}" readonly><span class="ds-chip">{칩 문구}</span></div>
+    <div class="ds-row"><input class="ds-input" placeholder="{입력 안내 문구}" readonly><span class="ds-chip is-on">{칩 문구}</span></div>
   </div>
 </div>
 ```

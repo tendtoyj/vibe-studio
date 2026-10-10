@@ -65,7 +65,7 @@ html은 **저장된 md 파일을 다시 읽어서, 그 내용만으로** 채운�
 | 2 | Benchmark | `benchmark.html` |
 | 3 | Voice | `VOICE.html` |
 | 4 | Design | `DESIGN.html` |
-| 5 | User Flow | `userflow.html` |
+| 5 | Flows | `FLOWS.html` |
 
 - **지금 만드는 문서:** `<li class="is-current">`. 링크 아래에 `<ul class="toc">`로 이 문서의 섹션 목차를 단다. 목차 링크의 `href="#id"`는 `<main>` 안 `section`의 `id`와 맞춘다.
 - **`docs/`에 html이 이미 있는 문서:** 클래스 없는 `<li>`로 링크만.
