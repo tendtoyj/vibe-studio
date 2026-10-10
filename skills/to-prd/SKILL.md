@@ -1,6 +1,6 @@
 ---
 name: to-prd
-description: Vibe UX 기획 산출물(docs/idea.md, docs/benchmark.md, docs/userflow.md, docs/brandvoice.md, 있으면 docs/DESIGN.md)을 하나의 PRD 문서로 통합하고, 이후 PRD를 갱신·관리하는 스킬. 파일들을 확인하고, 핵심 기능을 우선순위가 매겨진 Functional Requirements로 정리하고, User Scenarios·Success Criteria·Edge Cases·Assumptions까지 갖춘 docs/PRD.md를 만든다. 이미 PRD가 있으면 덮어쓰지 않고 FR/SC ID를 보존하며 업데이트한다. 이 PRD는 이후 vibe-build의 roadmap·plan 단계가 그대로 소비하는 기준 문서다. 사용자가 PRD 만들기, 기획 문서 합치기, 제품 요구사항 정의서, "이제 PRD로 묶어줘", "기획 끝났으니 정리해줘"라고 하거나, 이미 있는 PRD에 변경을 반영("PRD 업데이트", "이 기능 PRD에 추가", "범위 바꿨으니 PRD 고쳐줘", "이거 결정됐으니 반영")하려 할 때 사용한다. Vibe UX 기획 플로우의 마지막 단계이자, 이후에도 갱신되는 살아있는 문서를 관리한다.
+description: Vibe Studio 기획 산출물(docs/PRODUCT.md, docs/benchmark.md, docs/userflow.md, docs/VOICE.md, 있으면 docs/DESIGN.md·docs/DECISIONS.md)을 하나의 PRD 문서로 통합하고, 이후 PRD를 갱신·관리하는 스킬. 파일들을 확인하고, 핵심 기능을 우선순위가 매겨진 Functional Requirements로 정리하고, User Scenarios·Success Criteria·Edge Cases·Assumptions까지 갖춘 docs/PRD.md를 만든다. 이미 PRD가 있으면 덮어쓰지 않고 FR/SC ID를 보존하며 업데이트한다. 이 PRD는 이후 vibe-build의 roadmap·plan 단계가 그대로 소비하는 기준 문서다. 사용자가 PRD 만들기, 기획 문서 합치기, 제품 요구사항 정의서, "이제 PRD로 묶어줘", "기획 끝났으니 정리해줘"라고 하거나, 이미 있는 PRD에 변경을 반영("PRD 업데이트", "이 기능 PRD에 추가", "범위 바꿨으니 PRD 고쳐줘", "이거 결정됐으니 반영")하려 할 때 사용한다. Vibe Studio 기획 플로우의 마지막 단계이자, 이후에도 갱신되는 살아있는 문서를 관리한다.
 ---
 
 # To PRD
@@ -10,7 +10,7 @@ description: Vibe UX 기획 산출물(docs/idea.md, docs/benchmark.md, docs/user
 - **사람이 읽는 면:** 개요·배경·차별 프레이밍·브랜드처럼 "왜 이걸 만드는가"를 담는다.
 - **기계가 먹는 면:** `Functional Requirements`·`User Scenarios`·`Success Criteria`·`Edge Cases`·`Assumptions` — 다음 단계(roadmap)가 마일스톤을 나누고 요구사항을 추적할 때 파싱하는 **계약 섹션**이다.
 
-이 스킬은 Vibe UX 기획 플로우의 **마지막 단계**이고, 그다음은 vibe-build의 **roadmap**이다.
+이 스킬은 Vibe Studio 기획 플로우의 **마지막 단계**이고, 그다음은 vibe-build의 **roadmap**이다.
 
 PRD는 **한 번 쓰고 끝나는 문서가 아니다.** 기획이 끝난 뒤에도 범위가 바뀌고, 기능이 추가되고, roadmap·build에서 온 피드백이 되먹임된다. 그래서 이 스킬은 **최초 통합**과 **이후 갱신** 두 모드를 가진다 — 갱신할 때는 기존 PRD를 덮어쓰지 않고 **FR/SC ID와 사람이 손댄 내용을 보존**하며 변경분만 반영한다. (FR ID의 안정성은 roadmap의 요구사항 추적이 깨지지 않게 하는 핵심이다.)
 
@@ -20,11 +20,12 @@ PRD는 **한 번 쓰고 끝나는 문서가 아니다.** 기획이 끝난 뒤에
 
 | 파일 | 만드는 스킬 | 담는 것 | 필수 |
 |------|------------|---------|:---:|
-| `docs/idea.md` | brainstorming-idea | 컨셉·문제·타깃·핵심 기능·플랫폼 | ✅ |
-| `docs/benchmark.md` | benchmark-research | 경쟁 비교·차별 프레이밍 | ✅ |
+| `docs/PRODUCT.md` | brainstorming-idea (+ benchmark-research가 포지셔닝 추가) | 컨셉·문제·타깃·핵심 기능·포지셔닝·플랫폼 | ✅ |
+| `docs/benchmark.md` | benchmark-research | 경쟁 비교·차별 프레이밍 근거 | ✅ |
 | `docs/userflow.md` | userflow-generator | 온보딩·핵심 해피패스·화면 | ✅ |
-| `docs/brandvoice.md` | brand-voice | 확정 이름·보이스·톤 | ✅ |
+| `docs/VOICE.md` | brand-voice | 확정 이름·보이스·톤 | ✅ |
 | `docs/DESIGN.md` | design-brandfit | 시각 디자인 시스템 | 있으면 |
+| `docs/DECISIONS.md` | 모든 단계 | 단계마다 사용자가 정한 결정 기록 | 있으면 |
 
 산출물은 `docs/PRD.md`.
 
@@ -42,24 +43,27 @@ PRD는 **한 번 쓰고 끝나는 문서가 아니다.** 기획이 끝난 뒤에
   - **FR/SC ID를 보존한다.** 기존 ID는 절대 재배정하지 않는다. 새 요구사항은 **다음 번호로 append**(`FR-007`…). 제거되는 요구사항은 번호를 재사용하지 말고 `~~FR-004~~ (제거됨: 사유)`로 표시한다.
   - **사람이 손댄 섹션을 함부로 덮지 않는다.** 입력 문서에 없지만 PRD에만 있는 내용(직접 추가한 결정·맥락)은 변경 요청과 충돌하지 않는 한 그대로 둔다.
   - **변경분만 반영한다.** "이 기능 추가", "범위 변경", "오픈 이슈 해소" 같은 요청을 해당 섹션에만 적용하고, 상단 개정 이력에 한 줄 남긴다(최종 수정일 + 변경 요약).
-  - 4개 기획 입력은 **변경의 출처가 아닐 수 있다** — 업데이트는 보통 새 결정·피드백에서 온다. 사용자가 준 변경 내용을 우선하고, 필요할 때만 입력 문서를 다시 참조한다.
+  - 업데이트 요청이 **새 결정**이면("이거 결정됐으니 반영") PRD에 반영하는 것과 함께 `docs/DECISIONS.md`에도 한 줄 추가한다(단계 칸은 `to-prd`, 기존 결정을 뒤집는 거면 기존 줄 상태를 `번복 → D-00N`으로).
+- 4개 기획 입력은 **변경의 출처가 아닐 수 있다** — 업데이트는 보통 새 결정·피드백에서 온다. 사용자가 준 변경 내용을 우선하고, 필요할 때만 입력 문서를 다시 참조한다.
 
 ## Step 2 — 입력 점검
 
 먼저 입력 파일이 있는지 확인한다(`ls docs/` 또는 각 파일 읽기).
 
-- **필수 4개가 다 있으면:** 각 파일을 읽고 통합으로 넘어간다. `DESIGN.md`가 있으면 함께 읽는다.
+- **필수 4개가 다 있으면:** 각 파일을 읽고 통합으로 넘어간다. `DESIGN.md`·`DECISIONS.md`가 있으면 함께 읽는다.
 - **일부 없으면:** 어떤 파일이 없고 어느 스킬이 만드는지 알려주고, 먼저 그 스킬을 돌릴지 묻는다. 예: "userflow.md가 아직 없어요. userflow-generator를 먼저 돌릴까요? 아니면 지금 있는 것만으로 초안 PRD를 만들고 해당 섹션은 비워둘까요?"
 - 사용자가 그대로 진행하길 원하면, **빠진 섹션은 `⚠️ (userflow.md 없음 — 추후 보완)`** 으로 표시하고 진행한다. 추측으로 메우지 않는다.
 - `DESIGN.md`는 없어도 진행한다(아직 design-brandfit을 안 돌렸을 수 있다). 다만 9번 섹션에서 "디자인 시스템 미정"으로 표시하고, roadmap 단계 전에 design-brandfit이 필요함을 오픈 이슈에 남긴다.
 
-파일을 읽을 때, 단순 복붙이 아니라 **서로 연결**한다 — idea의 핵심 기능이 userflow의 어느 화면/시나리오에서 실현되는지, benchmark의 차별 프레이밍이 어떤 기능으로 뒷받침되는지 머릿속에 매핑하며 읽는다.
+파일을 읽을 때, 단순 복붙이 아니라 **서로 연결**한다 — PRODUCT.md의 핵심 기능이 userflow의 어느 화면/시나리오에서 실현되는지, 포지셔닝이 어떤 기능으로 뒷받침되는지 머릿속에 매핑하며 읽는다.
+
+**DECISIONS.md는 이미 닫힌 결정이다.** 상태가 `유효`인 결정과 어긋나게 PRD를 쓰지 않는다(예: "연속일수는 v1에서 뺌"이 있으면 그 기능을 P0로 올리지 않는다). 결정과 다른 판단이 필요해 보이면 사용자에게 묻는다. 이미 DECISIONS.md에 있는 결정은 Assumptions에 다시 적지 않는다 — Assumptions는 **PRD를 쓰면서 새로 정한 기본값**만 담는다.
 
 ---
 
 ## Step 3 — Functional Requirements로 정리 (PRD의 척추)
 
-idea.md의 핵심 기능과 userflow.md의 흐름을 합쳐 **기능 요구사항 목록**을 만든다. 이게 PRD의 척추이자 roadmap이 마일스톤으로 쪼갤 단위다. 각 요구사항은:
+PRODUCT.md의 핵심 기능과 userflow.md의 흐름을 합쳐 **기능 요구사항 목록**을 만든다. 이게 PRD의 척추이자 roadmap이 마일스톤으로 쪼갤 단위다. 각 요구사항은:
 
 - **안정적 ID를 갖는다 — `FR-001`, `FR-002` …** roadmap이 "어떤 FR이 어느 마일스톤에서 충족되는지" 추적 표를 만들 때 이 ID를 키로 쓴다. ID는 다시 바뀌지 않게 한다.
 - **테스트 가능한 문장으로 쓴다.** "한두 줄 설명"이 아니라 검증 가능한 단언으로. 예: `FR-003: 사용자는 기록한 항목을 날짜별로 모아 볼 수 있어야 한다.` 구현 기술·파일·내부 구조는 넣지 않는다.
@@ -101,20 +105,20 @@ roadmap이 PRD를 기계적으로 소비하려면 아래 네 가지가 계약 �
 ```markdown
 # PRD — {확정 서비스 이름}
 
-> Vibe UX · to-prd 산출물
+> Vibe Studio · to-prd 산출물
 > 작성일: <YYYY-MM-DD> · 최종 수정일: <YYYY-MM-DD>
 > 개정 이력: v1 최초 통합 <YYYY-MM-DD>{업데이트 시 · v2 <변경 요약> <날짜> 한 줄씩 누적}
-> 기반: idea.md, benchmark.md, userflow.md, brandvoice.md, DESIGN.md
+> 기반: PRODUCT.md, benchmark.md, userflow.md, VOICE.md, DESIGN.md, DECISIONS.md
 
 ## 1. 개요
-- **한 줄 정의:** <누구를 위해, 무엇을, 어떻게>   ← idea
-- **해결하는 문제:** <핵심 문제>   ← idea
-- **타깃 사용자:** <핵심 사용자와 맥락>   ← idea
-- **플랫폼:** <모바일 / 웹 / 반응형>   ← idea
+- **한 줄 정의:** <누구를 위해, 무엇을, 어떻게>   ← PRODUCT
+- **해결하는 문제:** <핵심 문제>   ← PRODUCT
+- **타깃 사용자:** <핵심 사용자와 맥락>   ← PRODUCT
+- **플랫폼:** <모바일 / 웹 / 반응형>   ← PRODUCT
 
 ## 2. 배경 & 근거
 - **시장/경쟁 맥락:** <닮은 서비스들과 그 한계>   ← benchmark
-- **우리의 차별 프레이밍:** <어디에 자리 잡고 무엇이 다른가>   ← benchmark
+- **우리의 차별 프레이밍:** <어디에 자리 잡고 무엇이 다른가>   ← PRODUCT 포지셔닝
 
 ## 3. 목표 (Goals)
 - <이 제품이 이루려는 것 1~3개>
@@ -128,7 +132,7 @@ roadmap이 PRD를 기계적으로 소비하려면 아래 네 가지가 계약 �
 - **완료 조건:** <성공했다고 볼 수 있는 관찰 가능한 끝점>
 ### Scenario 2 — ...
 
-## 5. Functional Requirements   ← idea + userflow
+## 5. Functional Requirements   ← PRODUCT + userflow
 | ID | 요구사항 (테스트 가능한 문장) | 우선순위 | 관련 시나리오 |
 |----|------------------------------|:---:|------|
 | FR-001 | 사용자는 <기능/행동>을 할 수 있어야 한다. | P0 | Scenario 1 |
@@ -147,7 +151,7 @@ roadmap이 PRD를 기계적으로 소비하려면 아래 네 가지가 계약 �
 | 환영 화면 | 첫 진입·가치 전달 | 가치 한 줄, [시작하기] |
 | ... | ... | ... |
 
-## 9. 브랜드 & 디자인   ← brandvoice + DESIGN
+## 9. 브랜드 & 디자인   ← VOICE + DESIGN
 - **서비스 이름:** <확정 이름>
 - **한 줄 무드:** <분위기>
 - **보이스 요약:** <Voice Summary>
@@ -161,7 +165,8 @@ roadmap이 PRD를 기계적으로 소비하려면 아래 네 가지가 계약 �
 - *구현 마일스톤 로드맵은 vibe-build의 roadmap 스킬이 docs/ROADMAP.md에 작성한다.*
 
 ## 11. Assumptions
-- <입력 문서에 없었지만 진행을 위해 정한 합리적 가정>
+- <입력 문서·DECISIONS.md에 없었지만 진행을 위해 정한 합리적 가정>
+- *사용자가 정한 결정은 docs/DECISIONS.md 참조.*
 
 ## 12. 오픈 이슈 / 리스크
 - <아직 정해지지 않은 것, 검증이 필요한 가정, 기술적/사용성 리스크>

@@ -7,10 +7,17 @@
   "plugins": [
     {
       "name": "vibe-studio",
-      "description": "바이브 코딩으로 신규 서비스를 기획부터 구현까지 한곳에서 진행하는 스킬 모음.",
+      "description": "바이브 코딩으로 신규 서비스를 기획하는 스킬 모음. 아이디어 → 벤치마크 → 유저 플로우 → 브랜드 보이스 → 디자인 브랜드화 → PRD 순서로 PRODUCT.md·VOICE.md·DESIGN.md·PRD.md를 쌓고, 단계마다 정한 것은 DECISIONS.md에 기록한다.",
       "source": "./",
       "category": "product",
-      "keywords": ["ux", "product", "planning", "build", "prd", "vibe-coding"]
+      "keywords": [
+        "ux",
+        "product",
+        "planning",
+        "build",
+        "prd",
+        "vibe-coding"
+      ]
     }
   ]
 }
