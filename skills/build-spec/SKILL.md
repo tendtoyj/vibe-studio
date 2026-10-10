@@ -30,8 +30,8 @@ SPEC.md는 기획을 다시 요약하는 문서가 아니다. 무엇을·왜는 
 
 | 이름 | 스택 | 언제 |
 |---|---|---|
-| **프로토타입** | Vite + React + Tailwind CSS | 화면을 눌러보며 흐름을 확인하는 게 목표일 때. 기본값 |
-| **실제 기능** | Next.js (App Router) + Tailwind CSS | 비밀 키가 필요한 기능을 진짜로 붙이거나, 실제 사람들이 쓰게 할 때 |
+| **프로토타입** | Vite + React + TypeScript + Tailwind CSS | 화면을 눌러보며 흐름을 확인하는 게 목표일 때. 기본값 |
+| **실제 기능** | Next.js (App Router) + TypeScript + Tailwind CSS | 비밀 키가 필요한 기능을 진짜로 붙이거나, 실제 사람들이 쓰게 할 때 |
 | **진짜 저장소** | Supabase (위 둘 중 하나에 더함) | 여러 사람이 실제 데이터를 주고받아야 할 때. 첫 버전에선 쓰지 않고 나중 조각으로 미룬다 |
 
 ## 입력 / 산출물
@@ -187,7 +187,7 @@ FLOWS 첫 버전 범위의 **나중에**, PRODUCT.md의 확장 아이디어, 1-3
 > 기반: docs/PRODUCT.md, docs/FLOWS.md, docs/DESIGN.md, docs/DECISIONS.md
 
 ## 정해둔 것
-- **스택:** 프로토타입 — Vite + React + Tailwind CSS · 아이콘 Phosphor(`@phosphor-icons/react`) · 글꼴 Pretendard
+- **스택:** 프로토타입 — Vite + React + TypeScript + Tailwind CSS · 아이콘 Phosphor(`@phosphor-icons/react`) · 글꼴 Pretendard
   - 이유: 첫 버전에 비밀 키가 필요한 기능이 없음
 - **데이터:** 가짜 데이터(이웃 5명, 책 20권)를 브라우저에 저장. 진짜 저장소는 나중에
 - **흉내만 낼 것:**
