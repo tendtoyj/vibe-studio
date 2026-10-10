@@ -42,7 +42,7 @@ Codex app에서는 Plugins에서 추가된 marketplace를 열고 `Vibe Studio`�
 | 2 | `benchmark-research` | `benchmark.md` + `images/` — 경쟁사 리서치와 핵심 경쟁 화면 캡처. 결론은 `PRODUCT.md`의 포지셔닝 칸에 |
 | 3 | `brand-voice` | `VOICE.md` — 확정 이름·보이스·톤 |
 | 4 | `design-brandfit` | `DESIGN.md` — 가져온 레퍼런스 DESIGN.md를 우리 브랜드로 (레퍼런스는 직접 준비) |
-| 5 | `userflow-generator` | `FLOWS.md` — 플로우 지도(Flow Map) + 핵심 플로우를 화면·상태·예외까지. 개발하면서 다시 불러 플로우를 하나씩 추가·갱신 |
+| 5 | `userflow-generator` | `FLOWS.md` — 첫 방문(온보딩)·다시 오기 두 뼈대 위에 기능 플로우와 기본 장치(로그인 등)를 얹은 플로우 지도 + F1 첫 방문을 화면·상태·예외까지. 개발하면서 다시 불러 플로우를 하나씩 추가·갱신 |
 
 - 단계마다 md와 함께 보기 좋은 html 리포트(`PRODUCT.html` 등)를 만듭니다. 왼쪽 사이드바로 문서 사이를 오갈 수 있습니다.
 - 모든 단계는 사용자가 정한 것을 `DECISIONS.md`에 한 줄씩 쌓습니다. 다음 단계는 이 기록을 읽고 이미 정한 것을 다시 묻지 않습니다.

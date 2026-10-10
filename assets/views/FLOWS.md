@@ -18,7 +18,7 @@ Flows가 `is-current`. 목차: 지도(`#map`) · 화면 목록(`#screens`) · �
 | FLOWS.md | html | section-label / h2 |
 |---|---|---|
 | 제목, 머리말 | 표지: `.eyebrow` = `Flows`, `h1` = 서비스 이름, `.lead` = `플로우 {전체 수}개 중 {후보가 아닌 수}개를 그렸어요.` + 깊게 그린 첫 플로우의 사용자의 한마디, `.tag` = ① 최종 수정일 ② 플랫폼 | — |
-| Flow Map | `#map`의 `.board` (아래 예시). 열 4개는 항상 이 순서: 후보 / 기획 완료 / UI 구현 / 기능 구현(`.is-done`). 깊게 그린 플로우의 `.board-item`은 `a href="#f1"`로 감싼다. 뺐거나 합친 플로우는 보드에 넣지 않는다. 보드 아래 기능 커버리지 문장을 `p.source`로 | `Map` / 플로우 지도 |
+| Flow Map | `#map`의 `.board` (아래 예시). 열 4개는 항상 이 순서: 후보 / 기획 완료 / UI 구현 / 기능 구현(`.is-done`). 깊게 그린 플로우의 `.board-item`은 `a href="#f1"`로 감싼다. 뺐거나 합친 플로우는 보드에 넣지 않는다. `구분`이 `첫 방문`·`다시 오기`면 `.flow-id`에 `F1 · 첫 방문`처럼 붙이고, `기능`이면 ID만. 보드 아래 기능 커버리지 문장을 `p.source`로, 그 아래 기본 장치 표를 `.table-wrap`(장치를 `tbody th`)으로 | `Map` / 플로우 지도 |
 | Screens | `#screens`의 `.table-wrap` 표: 화면(`tbody th`) / 등장 플로우 / 목적 / 상세(`F1 ①` → `#f1` 링크) | `Screens` / 화면 목록 |
 | 깊게 그린 플로우 하나 | 플로우마다 `section#f{n}` (아래 "플로우 섹션") | `F{n} · {상태}` / `{이름}` |
 
@@ -27,10 +27,11 @@ Flows가 `is-current`. 목차: 지도(`#map`) · 화면 목록(`#screens`) · �
 ```html
 <div class="board">
   <div class="board-col"><h3>후보 <span class="count">2</span></h3>
-    <div class="board-item"><span class="flow-id">F2</span><strong>반납하기</strong><p>"반납일이 언제였지?"</p></div>
+    <div class="board-item"><span class="flow-id">F2 · 다시 오기</span><strong>빌린 책 챙기기</strong><p>"그 책 언제 돌려주기로 했지?"</p></div>
+    <div class="board-item"><span class="flow-id">F3</span><strong>내 책 올리기</strong><p>"나도 빌려줄 책 있는데"</p></div>
   </div>
   <div class="board-col"><h3>기획 완료 <span class="count">1</span></h3>
-    <a class="board-item" href="#f1"><span class="flow-id">F1</span><strong>첫 대여 요청</strong><p>"근처에 빌릴 책 있나?"</p></a>
+    <a class="board-item" href="#f1"><span class="flow-id">F1 · 첫 방문</span><strong>첫 대여 요청</strong><p>"근처에 빌릴 책 있나?"</p></a>
   </div>
   <div class="board-col"><h3>UI 구현 <span class="count">0</span></h3></div>
   <div class="board-col is-done"><h3>기능 구현 <span class="count">0</span></h3></div>
