@@ -1,0 +1,275 @@
+<!doctype html>
+<!--
+  Vibe Studio 공통 리포트 틀
+  - <head>와 <style>, 맨 아래 <script>는 그대로 복사한다. 바꾸지 않는다.
+  - 바꾸는 곳은 세 군데뿐: <title>, <aside class="sidebar"> 안의 목록, <main> 안의 내용.
+  - 아래 내용은 PRODUCT.md를 그린 예시다(가상의 서비스 "한칸").
+
+  컴포넌트 (class 이름)
+  - .cover                 표지: .eyebrow + h1 + .lead + .meta(.tag 여러 개)
+  - section.section[id]    섹션: .section-label + h2 + 내용. id는 사이드바 링크와 맞춘다
+  - .flow > .flow-step     흐름 카드 (화살표 자동)
+  - .grid > .card          카드 그리드 (.card.is-muted = 흐린 카드, 개수가 홀수면 마지막 카드가 한 줄을 다 쓴다)
+  - .callout               강조 박스 (.callout.is-empty = 아직 비어 있는 상태)
+  - .chips > .chip         칩 목록 (.chip.is-selected = 선택됨)
+  - .kv                    라벨-값 목록 (dl/dt/dd)
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한칸 — Product</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f7f7f8;
+    --line: #e7e7ea;
+    --ink: #17171a;
+    --ink-2: #4b4b55;
+    --ink-3: #8a8a96;
+    --accent: #2f6bff;
+    --accent-soft: #eef3ff;
+    --radius: 12px;
+    --sidebar: 248px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 32px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+  }
+  a { color: inherit; }
+
+  /* ---------- layout ---------- */
+  .layout { display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); min-height: 100vh; }
+  .sidebar {
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    border-right: 1px solid var(--line); padding: 28px 20px;
+  }
+  main { max-width: 820px; width: 100%; padding: 56px 56px 96px; }
+
+  /* ---------- sidebar ---------- */
+  .brand { font-weight: 700; font-size: 16px; letter-spacing: -0.01em; }
+  .brand small { display: block; font-weight: 500; font-size: 12px; color: var(--ink-3); letter-spacing: 0; }
+  .nav { list-style: none; margin: 28px 0 0; padding: 0; }
+  .nav-group { font-size: 11px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 8px; }
+  .nav a {
+    display: flex; align-items: center; gap: 8px; text-decoration: none;
+    padding: 6px 10px; border-radius: 8px; color: var(--ink-2); font-size: 14px;
+  }
+  .nav a:hover { background: var(--surface); }
+  .nav .step { font-size: 11px; color: var(--ink-3); width: 14px; font-variant-numeric: tabular-nums; }
+  .nav .is-current > a { background: var(--surface); color: var(--ink); font-weight: 600; }
+  .nav .is-pending > a { color: var(--ink-3); pointer-events: none; }
+  .nav .is-pending > a::after { content: "준비 중"; margin-left: auto; font-size: 11px; }
+  .toc { list-style: none; margin: 4px 0 8px 22px; padding: 0 0 0 10px; border-left: 1px solid var(--line); }
+  .toc a { padding: 4px 10px; font-size: 13px; color: var(--ink-3); }
+  .toc a.is-active { color: var(--accent); font-weight: 600; background: none; }
+
+  /* ---------- cover ---------- */
+  .cover { padding-bottom: 40px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  .eyebrow { font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+  .cover h1 { font-size: 40px; line-height: 1.2; letter-spacing: -0.03em; margin: 10px 0 14px; }
+  .lead { font-size: 20px; line-height: 1.55; color: var(--ink-2); margin: 0; letter-spacing: -0.01em; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .tag { font-size: 12px; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+
+  /* ---------- section ---------- */
+  .section { padding-top: 48px; }
+  .section-label { font-size: 12px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.06em; text-transform: uppercase; }
+  .section h2 { font-size: 22px; letter-spacing: -0.02em; margin: 4px 0 16px; }
+  .section p { margin: 0 0 12px; color: var(--ink-2); }
+
+  /* ---------- flow ---------- */
+  .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .flow-step { position: relative; background: var(--surface); border-radius: var(--radius); padding: 18px; }
+  .flow-step:not(:last-child)::after {
+    content: "→"; position: absolute; right: -21px; top: 50%; transform: translateY(-50%);
+    color: var(--ink-3); font-size: 16px;
+  }
+  .flow-step h3 { font-size: 13px; color: var(--ink-3); font-weight: 600; margin: 0 0 6px; }
+  .flow-step p { margin: 0; color: var(--ink); font-size: 14px; }
+
+  /* ---------- cards ---------- */
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .grid > .card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+  .card h3 { font-size: 15px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .card p { margin: 0; font-size: 14px; color: var(--ink-2); }
+  .card .num { font-size: 12px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .card.is-muted { border-style: dashed; background: none; }
+  .card.is-muted h3, .card.is-muted p { color: var(--ink-3); }
+  .sub { font-size: 13px; font-weight: 600; color: var(--ink-3); margin: 24px 0 10px; }
+
+  /* ---------- callout ---------- */
+  .callout { background: var(--accent-soft); border-radius: var(--radius); padding: 22px 24px; }
+  .callout .big { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 12px; color: var(--ink); }
+  .callout.is-empty { background: none; border: 1px dashed var(--line); color: var(--ink-3); text-align: center; padding: 28px; }
+  .callout.is-empty p { color: var(--ink-3); margin: 0; }
+  .source { font-size: 12px; color: var(--ink-3); margin-top: 12px; }
+
+  /* ---------- key-value ---------- */
+  .kv { display: grid; grid-template-columns: 120px 1fr; gap: 10px 16px; margin: 0; }
+  .kv dt { color: var(--ink-3); font-size: 13px; padding-top: 1px; }
+  .kv dd { margin: 0; color: var(--ink); }
+
+  /* ---------- chips ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; color: var(--ink-2); }
+  .chip.is-selected { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .chip.is-selected::before { content: "✓ "; }
+
+  .footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; color: var(--ink-3); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 16px; }
+    .nav { margin-top: 12px; display: flex; gap: 4px; overflow-x: auto; }
+    .nav-group, .toc { display: none; }
+    .nav a { white-space: nowrap; }
+    .nav .is-pending > a::after { content: none; }
+    main { padding: 32px 16px 64px; }
+    .cover h1 { font-size: 30px; }
+    .lead { font-size: 17px; }
+    .flow { grid-template-columns: 1fr; gap: 20px; }
+    .flow-step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -20px; transform: translateX(-50%); }
+    .grid { grid-template-columns: 1fr; }
+    .kv { grid-template-columns: 1fr; gap: 2px; }
+    .kv dd { margin-bottom: 10px; }
+  }
+  @media print {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    main { max-width: none; padding: 0; }
+    .section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="brand">한칸<small>Vibe Studio</small></div>
+    <ul class="nav">
+      <li class="nav-group">기획 문서</li>
+      <li class="is-current">
+        <a href="PRODUCT.html"><span class="step">1</span>Product</a>
+        <ul class="toc">
+          <li><a href="#concept">컨셉</a></li>
+          <li><a href="#features">핵심 기능</a></li>
+          <li><a href="#positioning">포지셔닝</a></li>
+          <li><a href="#platform">플랫폼</a></li>
+          <li><a href="#naming">이름</a></li>
+        </ul>
+      </li>
+      <li class="is-pending"><a href="benchmark.html"><span class="step">2</span>Benchmark</a></li>
+      <li class="is-pending"><a href="userflow.html"><span class="step">3</span>User Flow</a></li>
+      <li class="is-pending"><a href="VOICE.html"><span class="step">4</span>Voice</a></li>
+      <li class="is-pending"><a href="DESIGN.html"><span class="step">5</span>Design</a></li>
+      <li class="is-pending"><a href="PRD.html"><span class="step">6</span>PRD</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <header class="cover">
+      <div class="eyebrow">Product</div>
+      <h1>한칸</h1>
+      <p class="lead">작심삼일이 반복되는 사람을 위해, 하루 한 장 사진으로 습관을 기록하고 한 칸씩 채워지는 그리드로 꾸준함을 눈으로 보여주는 서비스</p>
+      <div class="meta">
+        <span class="tag">가칭</span>
+        <span class="tag">반응형 웹 · 모바일 우선</span>
+        <span class="tag">2026-10-10</span>
+      </div>
+    </header>
+
+    <section class="section" id="concept">
+      <div class="section-label">Concept</div>
+      <h2>누구의 어떤 문제를, 어떻게 푸나</h2>
+      <div class="flow">
+        <div class="flow-step">
+          <h3>문제</h3>
+          <p>습관 앱은 체크만 쌓여서 며칠 지나면 기록할 이유가 사라진다. 빠뜨린 날의 빨간 표시가 오히려 그만두게 만든다.</p>
+        </div>
+        <div class="flow-step">
+          <h3>누구를 위해</h3>
+          <p>운동·독서·식단 같은 습관을 몇 번 시도했다 그만둔 20~30대 직장인</p>
+        </div>
+        <div class="flow-step">
+          <h3>솔루션</h3>
+          <p>체크 대신 사진 한 장. 쌓인 사진이 그리드로 채워져, 숫자가 아니라 내 하루들의 모음으로 꾸준함을 느끼게 한다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-label">Features</div>
+      <h2>핵심 기능</h2>
+      <div class="grid">
+        <div class="card"><div class="num">01</div><h3>사진 한 장 기록</h3><p>그날의 습관을 사진 한 장과 한 줄 메모로 남긴다.</p></div>
+        <div class="card"><div class="num">02</div><h3>칸 그리드</h3><p>기록이 날짜별 칸으로 채워져 한 달이 한눈에 보인다.</p></div>
+        <div class="card"><div class="num">03</div><h3>부담 없는 빈칸</h3><p>빠진 날은 경고 대신 빈칸으로 둔다. 다시 시작하기 쉽게.</p></div>
+        <div class="card"><div class="num">04</div><h3>습관 여러 개</h3><p>습관마다 그리드를 따로 두고 홈에서 전환한다.</p></div>
+      </div>
+      <div class="sub">확장 아이디어</div>
+      <div class="grid">
+        <div class="card is-muted"><h3>월간 회고 카드</h3><p>한 달 그리드를 이미지로 저장·공유</p></div>
+        <div class="card is-muted"><h3>친구와 같이 채우기</h3><p>같은 습관을 친구와 나란히 보기</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="positioning">
+      <div class="section-label">Positioning</div>
+      <h2>포지셔닝</h2>
+      <div class="callout is-empty">
+        <p>벤치마크 리서치를 마치면 여기에 우리의 자리와 차별점이 채워져요.</p>
+      </div>
+    </section>
+
+    <section class="section" id="platform">
+      <div class="section-label">Platform</div>
+      <h2>플랫폼</h2>
+      <dl class="kv">
+        <dt>형태</dt><dd>반응형 웹</dd>
+        <dt>기준 뷰포트</dt><dd>모바일 우선 — 하루에 한 번 폰으로 꺼내 쓰는 서비스라서</dd>
+      </dl>
+    </section>
+
+    <section class="section" id="naming">
+      <div class="section-label">Naming</div>
+      <h2>이름 후보</h2>
+      <div class="chips">
+        <span class="chip is-selected">한칸</span>
+        <span class="chip">하루한장</span>
+        <span class="chip">채움</span>
+      </div>
+      <p class="source">가칭이에요. 이름은 brand-voice 단계에서 확정해요.</p>
+    </section>
+
+    <footer class="footer">Vibe Studio · 원본: docs/PRODUCT.md</footer>
+  </main>
+</div>
+
+<script>
+  // 스크롤 위치에 맞춰 사이드바 목차 강조
+  (function () {
+    var links = [].slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+    var pairs = links.map(function (a) { return [a, document.getElementById(a.getAttribute('href').slice(1))]; })
+                     .filter(function (p) { return p[1]; });
+    if (!pairs.length) return;
+    function update() {
+      var current = pairs[0];
+      var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) current = pairs[pairs.length - 1];
+      else pairs.forEach(function (p) { if (p[1].getBoundingClientRect().top <= 120) current = p; });
+      pairs.forEach(function (p) { p[0].classList.toggle('is-active', p === current); });
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
+</body>
+</html>
