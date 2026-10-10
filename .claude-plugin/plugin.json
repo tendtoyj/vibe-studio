@@ -1,7 +1,7 @@
 {
   "name": "vibe-studio",
-  "description": "바이브 코딩으로 신규 서비스를 기획하고 만드는 스킬 모음. 아이디어 → 벤치마크 → 브랜드 보이스 → 디자인 브랜드화 → 유저 플로우 순서로 PRODUCT.md·BENCHMARK.md·VOICE.md·DESIGN.md·FLOWS.md를 쌓고, 단계마다 보기 좋은 html 리포트를 docs/report/에 함께 만들며, 정한 것은 DECISIONS.md에 기록한다. 만들기는 작업 묶음 단위의 고리로 돈다: build-spec이 플로우(또는 진짜로 바꾸기·스택 옮기기 같은 일)를 눌러볼 수 있는 조각으로 쪼개 docs/work/의 묶음 폴더에 SPEC.md를 만들고, build-slice가 조각을 차례로 만들며 조각마다 브라우저로 확인하고 저장한 뒤 개발 서버를 켜 두고, build-check가 플로우를 처음부터 끝까지 써보고 그 묶음의 REVIEW.md에 정리한다. FLOWS.md는 만들면서 계속 갱신하는 살아있는 문서다.",
-  "version": "0.3.4",
+  "description": "바이브 코딩으로 신규 서비스를 기획하고 만드는 스킬 모음. 아이디어 → 벤치마크 → 브랜드 보이스 → 디자인 브랜드화 → 유저 플로우 순서로 PRODUCT.md·BENCHMARK.md·VOICE.md·DESIGN.md·FLOWS.md를 쌓고, 단계마다 보기 좋은 html 리포트를 docs/report/에 함께 만들며, 정한 것은 DECISIONS.md에 기록한다. 만들기는 작업 묶음 단위의 고리로 돈다: build-spec이 플로우(또는 진짜로 바꾸기·스택 옮기기 같은 일)를 눌러볼 수 있는 조각으로 쪼개 docs/work/의 묶음 폴더에 SPEC.md를 만들고, build-slice가 조각을 하나씩 만들어 브라우저로 확인하고 저장하며, build-check가 플로우를 처음부터 끝까지 써보고 그 묶음의 REVIEW.md에 정리한다. FLOWS.md는 만들면서 계속 갱신하는 살아있는 문서다.",
+  "version": "0.3.3",
   "author": {
     "name": "tendtoyj",
     "email": "tendtoyj@gmail.com"
