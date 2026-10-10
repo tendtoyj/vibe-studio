@@ -1,7 +1,7 @@
 {
   "name": "vibe-studio",
-  "version": "0.3.2",
-  "description": "Vibe Studio skill pack for planning and building a new app or web product: idea, benchmark research, brand voice, design brand fitting, and user flows — written as PRODUCT.md, BENCHMARK.md, VOICE.md, DESIGN.md, FLOWS.md with an HTML report for each in docs/report/ and decisions logged in DECISIONS.md — then a build loop over work bundles in docs/build/: build-spec (SETUP.md and one bundle folder with SPEC.md), build-slice (build and verify one slice at a time), and build-check (end-to-end QA in the bundle's REVIEW.md).",
+  "version": "0.3.3",
+  "description": "Vibe Studio skill pack for planning and building a new app or web product: idea, benchmark research, brand voice, design brand fitting, and user flows — written as PRODUCT.md, BENCHMARK.md, VOICE.md, DESIGN.md, FLOWS.md with an HTML report for each in docs/report/ and decisions logged in DECISIONS.md — then a build loop over work bundles in docs/work/: build-spec (SETUP.md and one bundle folder with SPEC.md), build-slice (build and verify one slice at a time), and build-check (end-to-end QA in the bundle's REVIEW.md).",
   "author": {
     "name": "tendtoyj",
     "email": "tendtoyj@gmail.com"
@@ -10,7 +10,7 @@
   "interface": {
     "displayName": "Vibe Studio",
     "shortDescription": "Plan and build new app and web products, one user flow at a time.",
-    "longDescription": "Vibe Studio bundles a staged product planning workflow for new app and web ideas: brainstorming, benchmark research with competitor screen captures, brand voice, design-system brand fitting, and user-flow generation, each writing a markdown source file plus a readable HTML report and logging decisions to DECISIONS.md. Building then runs as a loop over work bundles — usually one flow, sometimes a cross-flow job like making login real or moving stacks: build-spec slices the bundle into small, checkable pieces in docs/build/<NN-name>/SPEC.md; build-slice builds one piece at a time with the design and voice, checks it in the browser, and commits; build-check walks the whole flow like a first-time user and records blockers, mismatches, and security risks in the bundle's REVIEW.md.",
+    "longDescription": "Vibe Studio bundles a staged product planning workflow for new app and web ideas: brainstorming, benchmark research with competitor screen captures, brand voice, design-system brand fitting, and user-flow generation, each writing a markdown source file plus a readable HTML report and logging decisions to DECISIONS.md. Building then runs as a loop over work bundles — usually one flow, sometimes a cross-flow job like making login real or moving stacks: build-spec slices the bundle into small, checkable pieces in docs/work/<NN-name>/SPEC.md; build-slice builds one piece at a time with the design and voice, checks it in the browser, and commits; build-check walks the whole flow like a first-time user and records blockers, mismatches, and security risks in the bundle's REVIEW.md.",
     "developerName": "tendtoyj",
     "category": "Productivity",
     "capabilities": [
