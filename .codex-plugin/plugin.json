@@ -1,6 +1,6 @@
 {
   "name": "vibe-studio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Vibe Studio skill pack for planning and building a new app or web product: idea, benchmark research, brand voice, design brand fitting, and user flows — written as PRODUCT.md, benchmark.md, VOICE.md, DESIGN.md, FLOWS.md with an HTML report for each and decisions logged in DECISIONS.md — then a per-flow build loop: build-spec (SPEC.md), build-slice (build and verify one slice at a time), and build-check (end-to-end QA in REVIEW.md).",
   "author": {
     "name": "tendtoyj",
