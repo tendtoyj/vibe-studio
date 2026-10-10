@@ -1,0 +1,13 @@
+{
+  "name": "vibe-studio",
+  "description": "바이브 코딩으로 신규 서비스를 기획부터 구현까지 한곳에서 진행하는 스킬 모음.",
+  "version": "0.1.0",
+  "author": {
+    "name": "tendtoyj",
+    "email": "tendtoyj@gmail.com"
+  },
+  "homepage": "https://github.com/tendtoyj/vibe-studio",
+  "repository": "https://github.com/tendtoyj/vibe-studio",
+  "license": "MIT",
+  "keywords": ["ux", "product", "planning", "build", "prd", "vibe-coding"]
+}
