@@ -1,7 +1,7 @@
 {
   "name": "vibe-studio",
   "version": "0.1.0",
-  "description": "Vibe Studio skill pack for planning a new app or web product: idea, benchmark research, brand voice, design brand fitting, and user flows — written as PRODUCT.md, benchmark.md, VOICE.md, DESIGN.md, FLOWS.md with an HTML report for each, and decisions logged in DECISIONS.md.",
+  "description": "Vibe Studio skill pack for planning a new app or web product: idea, benchmark research, brand voice, design brand fitting, user flows, and build specs — written as PRODUCT.md, benchmark.md, VOICE.md, DESIGN.md, FLOWS.md, SPEC.md with an HTML report for each, and decisions logged in DECISIONS.md.",
   "author": {
     "name": "tendtoyj",
     "email": "tendtoyj@gmail.com"
@@ -9,8 +9,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Vibe Studio",
-    "shortDescription": "Plan new app and web products from idea to user flows.",
-    "longDescription": "Vibe Studio bundles a staged product planning workflow for new app and web ideas: brainstorming, benchmark research with competitor screen captures, brand voice, design-system brand fitting, and user-flow generation. Every step writes a markdown source file plus a readable HTML report, and logs user decisions to DECISIONS.md.",
+    "shortDescription": "Plan new app and web products from idea to build-ready specs.",
+    "longDescription": "Vibe Studio bundles a staged product planning workflow for new app and web ideas: brainstorming, benchmark research with competitor screen captures, brand voice, design-system brand fitting, and user-flow generation, then build-spec slices each flow into small, checkable build pieces. Every step writes a markdown source file plus a readable HTML report, and logs user decisions to DECISIONS.md.",
     "developerName": "tendtoyj",
     "category": "Productivity",
     "capabilities": [
@@ -18,7 +18,8 @@
       "UX research",
       "Brand voice",
       "Design system",
-      "User flows"
+      "User flows",
+      "Build specs"
     ],
     "websiteURL": "https://github.com/tendtoyj/vibe-studio",
     "brandColor": "#2F6BFF",
@@ -33,6 +34,7 @@
     "planning",
     "brainstorming",
     "user-flow",
+    "spec",
     "vibe-coding"
   ]
 }
