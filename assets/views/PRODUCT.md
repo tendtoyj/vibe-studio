@@ -4,9 +4,9 @@
 
 **판단은 PRODUCT.md에 적힌 것으로만 한다.** 예: 포지셔닝이 비었는지, 이름이 확정됐는지는 PRODUCT.md를 보고 정한다.
 
-**함께 읽는 md:** `docs/VOICE.md` — 있으면 맨 끝에 브랜드 요약 섹션(`#brand`)을 붙인다(아래 "브랜드 요약"). `docs/DESIGN.md`의 디자인 요약은 design-brandfit을 연결할 때 추가한다. 그 전까지는 DESIGN.md가 있어도 섹션을 만들지 않는다.
+**함께 읽는 md:** `docs/VOICE.md` — 있으면 맨 끝에 브랜드 요약 섹션(`#brand`)을 붙인다(아래 "브랜드 요약"). `docs/DESIGN.md` — `docs/DESIGN.html`이 있을 때만(= design-brandfit을 거친 뒤) 브랜드 다음에 디자인 요약 섹션(`#design`)을 붙인다(아래 "디자인 요약"). 레퍼런스를 가져다 놓기만 한 DESIGN.md로는 만들지 않는다.
 
-**사이드바:** Product가 `is-current`. 목차는 컨셉(`#concept`) · 핵심 기능(`#features`) · 포지셔닝(`#positioning`) · 플랫폼(`#platform`) · 이름(`#naming`), VOICE.md가 있으면 뒤에 브랜드(`#brand`).
+**사이드바:** Product가 `is-current`. 목차는 컨셉(`#concept`) · 핵심 기능(`#features`) · 포지셔닝(`#positioning`) · 플랫폼(`#platform`) · 이름(`#naming`), VOICE.md가 있으면 뒤에 브랜드(`#brand`), DESIGN.html이 있으면 그 뒤에 디자인(`#design`).
 
 **본문 구성 (PRODUCT.md → html)** — 섹션 제목(`h2`)은 템플릿 것을 그대로 쓴다.
 
@@ -61,4 +61,23 @@
 </section>
 ```
 `docs/VOICE.html`이 아직 없으면 마지막 줄은 `자세한 내용: docs/VOICE.md`로 적는다.
+
+## 디자인 요약 (DESIGN.html이 있을 때만)
+
+`#brand` 다음(브랜드 섹션이 없으면 `#naming` 다음)에 붙인다. DESIGN.md에서 대표 색 3~5개(브랜드·주요 버튼·배경·글자 색 위주), 본문 글꼴, 아이콘 라이브러리만 가져온다. 색 견본은 DESIGN.md의 실제 색을 쓴다(REPORT.md 2번 예외).
+
+```html
+<section class="section" id="design">
+  <div class="section-label">Design</div>
+  <h2>디자인</h2>
+  <div class="swatches is-small">
+    <div class="swatch"><i class="chip-color" style="background:{hex}"></i><strong>{이름}</strong><code>{hex}</code></div>
+  </div>
+  <dl class="kv">
+    <dt>글꼴</dt><dd>{본문 글꼴}</dd>
+    <dt>아이콘</dt><dd>{아이콘 라이브러리}</dd>
+  </dl>
+  <p class="source"><a href="DESIGN.html">디자인 시스템 자세히 보기 →</a></p>
+</section>
+```
 

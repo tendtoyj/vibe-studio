@@ -1,6 +1,6 @@
 ---
 name: design-brandfit
-description: 다른 곳에서 가져온 레퍼런스 DESIGN.md(디자인 시스템 문서)의 시각 표현은 그대로 유지하고, 메타정보·보이스·카피만 우리 브랜드에 맞게 부분 편집하는 스킬. docs/에서 DESIGN.md와 VOICE.md를 찾아 gap을 분석한 뒤, 색·간격·타이포 같은 시각 섹션은 건드리지 않고, VOICE.md·PRODUCT.md와 중복되는 전략·서사 섹션(Brand Narrative·Personas)은 섹션째 덜어내며, frontmatter·폰트/아이콘·이름·Voice&Tone·UI 카피만 브랜드 보이스에 맞춰 제자리 편집한다(전면 재작성이 아니다). 본문은 영어로, 실제 서비스에 들어갈 한국어 예시 문장·표현만 한국어로 보존한다. 사용자가 "가져온 DESIGN.md 우리 걸로 바꿔줘", "디자인 시스템 브랜드화", "DESIGN.md를 브랜드 보이스에 맞게", "레퍼런스 디자인 가져와서 우리 톤으로", "design.md 변환"이라고 할 때 사용한다. Vibe Studio 기획 플로우의 네 번째 단계다(brand-voice 다음, userflow-generator 앞).
+description: 다른 곳에서 가져온 레퍼런스 DESIGN.md(디자인 시스템 문서)의 시각 표현은 그대로 유지하고, 메타정보·보이스·카피만 우리 브랜드에 맞게 부분 편집하는 스킬. docs/에서 DESIGN.md와 VOICE.md를 찾아 gap을 분석한 뒤, 색·간격·타이포 같은 시각 섹션은 건드리지 않고, VOICE.md·PRODUCT.md와 중복되는 전략·서사 섹션(Brand Narrative·Personas)은 섹션째 덜어내며, frontmatter·폰트/아이콘·이름·Voice&Tone·UI 카피만 브랜드 보이스에 맞춰 제자리 편집하고, 핵심 색·요소마다 "어디에 쓰고 어디엔 쓰지 않는지" 사용 경계를 추가한다(전면 재작성이 아니다). 결과는 색·글꼴·버튼을 실제로 그린 DESIGN.html 견본집으로도 만든다. 본문은 영어로, 실제 서비스에 들어갈 한국어 예시 문장·표현만 한국어로 보존한다. 사용자가 "가져온 DESIGN.md 우리 걸로 바꿔줘", "디자인 시스템 브랜드화", "DESIGN.md를 브랜드 보이스에 맞게", "레퍼런스 디자인 가져와서 우리 톤으로", "design.md 변환"이라고 할 때 사용한다. Vibe Studio 기획 플로우의 네 번째 단계다(brand-voice 다음, userflow-generator 앞).
 ---
 
 # Design Brandfit
@@ -14,7 +14,9 @@ description: 다른 곳에서 가져온 레퍼런스 DESIGN.md(디자인 시스�
 - **입력:**
   - `docs/DESIGN.md` — 외부에서 가져온 레퍼런스 디자인 시스템 문서. (Google Stitch DESIGN.md 9-섹션 포맷 + 필요 시 Voice/Narrative/Personas/States/Motion 등 확장 섹션을 포함하는 경우가 많다.)
   - `docs/VOICE.md` — brand-voice 스킬 산출물. 확정 서비스명·보이스·톤·금지선이 들어 있다.
-- **산출물:** 같은 `docs/DESIGN.md`. 시각 섹션은 그대로 두고, 불필요 섹션 삭제·frontmatter·폰트/아이콘·브랜드 텍스트 스팬만 제자리 편집한다(전면 재작성이 아니다).
+- **산출물:**
+  - 같은 `docs/DESIGN.md`. 시각 섹션은 그대로 두고, 불필요 섹션 삭제·frontmatter·폰트/아이콘·브랜드 텍스트 스팬·사용 경계(Usage Boundaries)만 제자리 편집한다(전면 재작성이 아니다).
+  - `docs/DESIGN.html` — DESIGN.md의 색·글꼴·컴포넌트를 실제로 그려 보여주는 견본집. PRODUCT.html에도 디자인 요약이 붙는다.
 
 ### 시작 시
 1. `docs/DESIGN.md`가 있는지 확인한다. 없으면 "변환할 레퍼런스 DESIGN.md가 docs/에 없어요. 먼저 레퍼런스를 가져다 두실래요?"라고 안내하고 멈춘다.
@@ -22,6 +24,18 @@ description: 다른 곳에서 가져온 레퍼런스 DESIGN.md(디자인 시스�
 3. 두 파일을 모두 읽은 뒤 Step 1로 간다.
 
 ---
+
+## 레퍼런스 형식은 제각각이다
+
+레퍼런스 DESIGN.md는 출처마다 형식이 다르다. Google Stitch의 9섹션 형식(§1 Visual Theme & Atmosphere …)도 있고, awesome-design-md처럼 frontmatter에 YAML 토큰(`colors`, `typography`, `rounded`, `spacing`, `components`)을 두고 본문을 Overview / Colors / Typography / Layout / Elevation / Components …로 나눈 형식도 있다. 이 문서에 나오는 섹션 이름(§1, Principles, States, Motion 등)은 **역할 기준의 예시**다. 실제 문서에서 같은 역할을 하는 섹션을 찾아 적용하고, 해당하는 섹션이 없으면 그 편집은 건너뛴다.
+
+| 이 문서의 이름 | 같은 역할의 예 |
+|---|---|
+| §1 Visual Theme & Atmosphere | Overview, Introduction, Brand Feel |
+| Principles | Design Principles, 각 섹션 안의 Principles 하위 항목 |
+| States / Motion | Interaction States, Animation, Elevation 안의 상태 설명 |
+
+**토큰 값이 기준이다.** 레퍼런스의 설명 문장과 토큰 값이 서로 다르면(예: 설명은 "8px 단위", 토큰은 4px) 값은 고치지 않고 토큰을 따른다. 어긋난 지점은 Step 2 gap에서 알리고 변환 노트의 "Known inconsistencies"에 적는다.
 
 ## Step 1 — 두 문서 읽고 매핑
 
@@ -57,18 +71,31 @@ description: 다른 곳에서 가져온 레퍼런스 DESIGN.md(디자인 시스�
 
 이미 **정렬되어 손댈 필요 없는 부분**(예: 둘 다 무이모지, 둘 다 차분한 elevation)도 함께 알려줘 사용자가 변환 범위를 신뢰하게 한다.
 
-gap 분석을 짧게 보고하고, "이대로 변환할까요? 아니면 색·톤 같은 결정부터 합의할까요?"라고 한 번 확인한 뒤 Step 3로 간다.
+**사용 경계(Usage Boundaries)를 제안한다.** 레퍼런스는 값(색·크기)은 주지만 "이걸 어디에만 쓰고 어디엔 쓰지 않는지"는 빠져 있는 경우가 많다. 이게 없으면 바이브 코딩에서 에이전트가 값은 지키면서 엉뚱한 곳에 쓴다(강조색으로 배경을 칠하는 식). 그래서 핵심 요소 4~6개에 대해 **값 → 의도 → 경계**를 한 줄씩 제안한다.
+- **대상:** DESIGN.md에 실제로 있는 요소만. 우선순위는 강조/브랜드 색 → 상태 색(오류·성공) → 큰 제목 글꼴(display) → 그림자·elevation → 시그니처 모서리·모션.
+- **근거:** ① 레퍼런스에 이미 있는 사용 규칙(있으면 그대로 옮긴다) ② VOICE.md의 성격·톤(예: "느긋한·차분한" → 강조색은 화면당 주요 행동 하나에만) ③ 아래 "색 결정 원칙". 근거 없이 지어내지 않는다.
+- **형태:** `요소(토큰·값) / 쓰는 곳 / 쓰지 않는 곳`. 예: `accent-500 #FF6F0F / 화면당 주요 버튼 하나, 선택 상태 / 배경 면, 본문 글자, 장식`.
+- 레퍼런스에 이미 충분한 경계 규칙이 있으면 "이미 있어요"라고 알리고 새로 만들지 않는다.
+
+gap 분석·경계 제안·아이콘 추천·폰트 치환을 **한 번에 묶어** 짧게 보고하고, "이대로 변환할까요? 아니면 색·톤 같은 결정부터 합의할까요?"라고 한 번 확인한 뒤 Step 3로 간다. 항목마다 따로 묻지 않는다.
 
 ---
 
 ## Step 3 — 부분 편집 (시각 섹션은 건드리지 않는다)
 
-합의되면 `DESIGN.md`를 **새로 쓰지 않는다.** 시각 섹션은 그대로 두고, 바꿔야 할 스팬만 골라 편집한다. 이 스킬이 하는 일은 딱 네 가지 편집뿐이다:
+합의되면 `DESIGN.md`를 **새로 쓰지 않는다.** 시각 섹션은 그대로 두고, 바꿔야 할 스팬만 골라 편집한다. 이 스킬이 하는 일은 딱 다섯 가지 편집뿐이다:
 
 1. **불필요 섹션 삭제** — Brand Narrative, Personas 등 VOICE.md·PRODUCT.md와 중복되는 전략·서사 확장 섹션을 블록째 잘라낸다.
 2. **frontmatter 작성** — 메타와 `runtime_deps`를 우리 서비스로 채운다.
 3. **폰트/아이콘 교체** — 타이포의 font-family 토큰과 아이콘 라이브러리 결정만 치환하고 `runtime_deps`에 기록한다.
 4. **브랜드 변환** — VOICE.md에 묶인 텍스트 스팬(Voice & Tone, §1의 *왜*, 색 이름/스토리, Principles 근거, States/Motion 카피 예시, CTA 샘플)만 다시 쓴다.
+5. **사용 경계 추가** — Step 2에서 합의한 경계를 표로 추가한다. 디자인 전체 원칙을 담은 독립 섹션(Principles 등)이 있으면 그 끝에, 없으면 색 섹션 바로 뒤에 `### Usage Boundaries`를 둔다. (타이포그래피 안의 Principles 같은 하위 항목은 해당하지 않는다.) 수치는 바꾸지 않고 규칙 문장만 더하는 편집이다. 본문 언어 정책(Step 4)대로 영어로 쓴다.
+   ```markdown
+   ### Usage Boundaries
+   | Element | Use for | Never use for |
+   |---|---|---|
+   | accent-500 (#FF6F0F) | One primary action per screen; selected state | Background fills, body text, decoration |
+   ```
 
 **편집하지 않는다 — 그래서 보존된다**
 아래는 애초에 Edit 대상이 아니므로 byte-for-byte 그대로 남는다. "안 바꾸려고 노력"하는 게 아니라 "건드리지 않아서" 보존되는 것이다.
@@ -76,7 +103,7 @@ gap 분석을 짧게 보고하고, "이대로 변환할까요? 아니면 색·�
 - 컴포넌트 수치, 아이코노그래피 *스타일* 규칙, Document Policies 구조.
 
 **변환 — 브랜드로 다시 쓴다**
-- **frontmatter:** `id`, `name`, `homepage`, `logo`, `ds.name`/`description`, `category`를 우리 서비스로. (verified 날짜는 오늘.)
+- **frontmatter:** 레퍼런스 frontmatter에 **있는 메타 필드만** 우리 서비스로 바꾼다(`name`, `description`, `id`, `ds.name` 등). 레퍼런스에 없는 필드는 아래 세 개만 추가한다: `verified`(오늘 날짜), `reference`(레퍼런스 출처 — 이름과 URL), `runtime_deps`. `homepage`·`logo`처럼 채울 값이 없는 필드는 만들지 않는다. 토큰(YAML의 colors·typography 등)은 이름 변경 외에는 건드리지 않는다.
 - **frontmatter `runtime_deps`:** 추천 확정된 아이콘 패키지와 치환 확정된 폰트 패밀리를, 다운스트림(프로토타이핑·바이브 코딩)이 산문을 읽지 않고 프론트매터만 보고 `import`할 수 있도록 machine-readable 블록으로 기록한다. `icons`에는 아래 표의 **npm 패키지명**(라이브러리 이름이 아니라 `lucide-react` 같은 실제 패키지)을, `fonts`에는 폰트 **패밀리명** 배열을 넣는다. (React 기준.)
   ```yaml
   runtime_deps:
@@ -85,7 +112,9 @@ gap 분석을 짧게 보고하고, "이대로 변환할까요? 아니면 색·�
   ```
 - **명명:** 레퍼런스 고유 토큰명(예: `carrot-*` → `accent-*`), 색 이름(예: "Karrot Orange" → 우리 브랜드 색명), 디자인 시스템명, 제품명 전부 교체. *렌더링은 동일하되 이름만 탈(脫)레퍼런스화.*
 - **§1 Visual Theme & Atmosphere:** 무드 묘사 자체(시각)는 두고, 분위기를 *왜* 그렇게 잡았는지 **근거·메타포만** VOICE.md로 재해석한다. 여기에 히스토리·지표 같은 없는 사실을 끌어오지 않는다 — 신규 서비스면 철학 서술로만.
-- **Voice & Tone:** VOICE.md의 컨텍스트 표·금지선·Voice 샘플로 전면 교체.
+- **Voice & Tone:** 레퍼런스에 이 섹션이 있으면 VOICE.md의 컨텍스트 표·금지선·Voice 샘플로 전면 교체한다. **없으면 새로 만들지 않는다** — 보이스는 VOICE.md가 맡는다.
+- **CTA·UI 카피 예시:** 레퍼런스 본문의 카피 예시는 VOICE.md에 있는 실제 문구(상황별 톤 예시, 쓰는 말)로 바꾼다. 맞는 문구가 없으면 PRODUCT.md의 기능 이름을 쓴다. 새 문구를 지어내지 않는다.
+- **레퍼런스 업종 전용 요소:** 레퍼런스 서비스에만 있는 컴포넌트·토큰(예: 숙소 예약 카드, 가격 표시, 호스트 배지, 서브브랜드 색)은 값과 구조는 그대로 둔다. 우리 기능에 대응되면 이름과 설명을 그 기능으로 바꾸고(예: `rating-display` → 빌려준 권수 표시), 대응이 없으면 이름 옆에 `(unused — reference-specific)`을 붙인다. 바이브 코딩 때 그대로 따라 만들지 않게 하기 위해서다.
 - **States/Principles/Motion 설명:** 구조·수치는 유지, **근거와 예시 카피만** 브랜드로 재해석. (예: spring 금지 근거를 "마켓 신뢰"에서 우리 톤으로.)
 
 **삭제 — 통째로 잘라낸다**
@@ -139,7 +168,7 @@ gap 분석을 짧게 보고하고, "이대로 변환할까요? 아니면 색·�
 
 **고유명사 병기:** 서비스명은 첫 등장 시 `BrandName (브랜드명)`처럼 한글+로마자 병기. (병기는 문체 보존이 아니라 고유명사 표기 규칙.)
 
-> 변환 노트(주석 블록)와 footer에는 "시각 토큰은 레퍼런스에서 유지, 메타·보이스는 VOICE.md 기반 재작성", voice 샘플의 검증 상태(신규 서비스면 미검증 기획 카피), 색 결정 근거를 영어로 남긴다.
+> 변환 노트(주석 블록)와 footer에는 "시각 토큰은 레퍼런스에서 유지, 메타·보이스는 VOICE.md 기반 재작성", voice 샘플의 검증 상태(신규 서비스면 미검증 기획 카피), 색 결정 근거를 영어로 남긴다. 변환 노트 맨 위에는 **레퍼런스 출처(이름·URL)** 를 꼭 적는다(DESIGN.html 표지가 이 값을 쓴다).
 
 ---
 
@@ -151,10 +180,21 @@ gap 분석을 짧게 보고하고, "이대로 변환할까요? 아니면 색·�
 - **유지한 것** (시각 토큰 한 줄 요약),
 - **삭제한 것** (Brand Narrative·Personas 등 덜어낸 섹션),
 - **변환한 것** (섹션별: frontmatter·명명·§1 근거·Voice·States),
+- **추가한 사용 경계** (몇 개, 핵심 한 줄),
 - **추천·치환한 것** (추천한 아이콘 라이브러리, 폰트 치환 내역: 레퍼런스 X → Y와 이유) — **프론트매터 `runtime_deps`에 패키지명·폰트 패밀리로 기록했음을 명시**,
 - **한국어로 보존한 카피**,
 - **짚어둘 판단** (특히 색값 유지 결정, 미검증 voice 샘플 등),
 - 이어서: "다음은 **userflow-generator**로 핵심 기능의 화면 흐름을 그려요. 이 DESIGN.md는 그 화면들과 이후 바이브 코딩의 기준이 돼요."
+
+### DESIGN.html 만들기
+
+DESIGN.md 편집을 적용한 뒤 `<스킬경로>/../../assets/REPORT.md`의 절차대로 html을 만든다. html은 대화 내용이 아니라 **저장된 md 파일만** 보고 채운다.
+
+1. `docs/DESIGN.html`을 만든다(구성: `assets/views/DESIGN.md`). DESIGN.md의 실제 색·글꼴·수치로 견본과 컴포넌트 미리보기를 그린다.
+2. 새 html이 생겼으므로 `docs/`의 다른 html 사이드바를 REPORT.md 규칙대로 갱신한다.
+3. `docs/PRODUCT.html`이 있으면 다시 만들어 디자인 요약 섹션을 붙인다(구성: `assets/views/PRODUCT.md`). 곧 통째로 다시 만들어지므로 2번에서 PRODUCT.html은 건너뛰어도 된다.
+
+보고 끝에 "브라우저로 `docs/DESIGN.html`을 열면 우리 서비스의 색·글꼴·버튼을 실제로 볼 수 있어요"를 덧붙인다.
 
 ### 결정 기록 — docs/DECISIONS.md
 
@@ -164,6 +204,7 @@ gap 분석을 짧게 보고하고, "이대로 변환할까요? 아니면 색·�
 - 폰트 치환 (레퍼런스 X → Y, 이유) — 치환하지 않았으면 생략
 - 색값 유지/변경 결정
 - 덜어낸 섹션 (Brand Narrative·Personas 등)
+- 사용 경계 중 핵심 1~2개 (특히 강조색)
 
 파일이 없으면 헤더째 만든다. 형식:
 
@@ -182,3 +223,4 @@ gap 분석을 짧게 보고하고, "이대로 변환할까요? 아니면 색·�
 - **사실을 지어내지 않는다.** 레퍼런스의 연혁·지표를 우리 것으로 위조하지 않는다. 신규 서비스는 철학 서술로.
 - **문체는 보존한다.** 실제 한국어 카피는 번역하지 않는다 — 그게 브랜드의 목소리다.
 - **gap을 먼저 보여준다.** 덮어쓰기 전에 무엇을 유지/변환하는지 합의한다.
+- **값만이 아니라 경계까지.** 수치는 레퍼런스를 따르되, "어디에 쓰고 어디엔 안 쓰는지"가 비어 있으면 합의해서 채운다.

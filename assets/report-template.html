@@ -22,6 +22,16 @@
   - .compare > .compare-col     두 단 비교 (.is-do = 해요 ✓, .is-dont = 안 해요 ✕): h3 + ul > li
                                 li 안에 strong(항목) + span.note(설명) 가능
   - p.say                  실제 문구 예시 한 줄 (.say.is-do = 좋은 예, .say.is-dont = 피할 예)
+
+  디자인 견본 부품 (DESIGN.html·PRODUCT.html 디자인 요약 전용)
+  이 부품 안에서만 DESIGN.md의 실제 값을 style="" 로 넣는다 (REPORT.md 2번 예외)
+  - .swatches > .swatch    색 견본: i.chip-color(style="background:#hex") + strong(이름) + code(값) + span.note(쓰임새)
+                           (.swatches.is-small = 작은 견본, PRODUCT.html 요약용)
+  - .type-scale > .type-row  글꼴 단계: .type-meta(이름 · 크기/굵기/줄간격) + .type-sample(style="font-size:…;font-weight:…;line-height:…")
+  - .token-row             간격·모서리·그림자: .token-box(style로 크기·radius·shadow) + .token-meta
+  - .ds-preview            컴포넌트 미리보기 영역. style="--ds-…: 값" 로 디자인 값을 넣으면 안의
+                           .ds-btn(.is-secondary) / .ds-card / .ds-input / .ds-chip 이 그 값으로 그려진다
+  - i.dot                  표 안의 작은 색 점 (style="background:#hex")
 -->
 <html lang="ko">
 <head>
@@ -141,6 +151,7 @@
   .table-wrap td { color: var(--ink-2); }
   .table-wrap tr:last-child > * { border-bottom: 0; }
   .table-wrap a { color: var(--accent); text-decoration: none; }
+  .table-wrap code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: var(--surface); padding: 1px 5px; border-radius: 4px; }
   .table-wrap + .sub { margin-top: 28px; }
   .table-wrap + p { margin-top: 12px; }
 
@@ -188,6 +199,57 @@
   .say.is-do { background: var(--good-soft); border-left-color: var(--good); }
   .say.is-dont { background: var(--bad-soft); border-left-color: var(--bad); color: var(--ink-2); }
 
+  /* ---------- design specimen ---------- */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .swatch { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; font-size: 13px; }
+  .swatch .chip-color { display: block; height: 72px; border-bottom: 1px solid var(--line); }
+  .swatch strong, .swatch code, .swatch .note { display: block; padding: 0 12px; }
+  .swatch strong { padding-top: 10px; font-size: 14px; }
+  .swatch code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+  .swatch .note { color: var(--ink-3); padding-bottom: 12px; margin-top: 4px; }
+  .swatches.is-small { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+  .swatches.is-small .chip-color { height: 40px; }
+  .swatches.is-small .note { display: none; }
+  .swatches + .kv { margin-top: 16px; }
+  .type-scale { border: 1px solid var(--line); border-radius: var(--radius); }
+  .type-row { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 16px 18px; border-top: 1px solid var(--line); }
+  .type-row:first-child { border-top: 0; }
+  .type-meta { font-size: 12px; color: var(--ink-3); }
+  .type-meta strong { display: block; font-size: 13px; color: var(--ink); }
+  .type-sample { color: var(--ink); overflow-wrap: anywhere; }
+  .token-rows { display: grid; gap: 10px; }
+  .token-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center; font-size: 13px; }
+  .token-box { width: 48px; height: 48px; background: var(--accent-soft); border: 1px solid var(--line); }
+  .token-box.is-space { height: 16px; min-width: 2px; border: 0; border-radius: 2px; background: var(--accent); }
+  .token-meta { color: var(--ink-2); }
+  .token-meta code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--ink-3); margin-left: 6px; }
+  .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--line); vertical-align: -1px; margin-right: 6px; }
+  .ds-preview {
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 28px;
+    background: var(--ds-bg, #fff); color: var(--ds-text, var(--ink));
+    font-family: var(--ds-font, inherit); display: grid; gap: 20px;
+  }
+  .ds-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .ds-btn {
+    font: inherit; font-size: var(--ds-btn-size, 15px); font-weight: 600; cursor: default;
+    padding: var(--ds-btn-pad, 12px 20px); border-radius: var(--ds-btn-radius, var(--ds-radius, 10px)); white-space: nowrap;
+    background: var(--ds-primary, var(--accent)); color: var(--ds-on-primary, #fff); border: 1px solid transparent;
+  }
+  .ds-btn.is-secondary { background: var(--ds-surface, var(--surface)); color: var(--ds-text, var(--ink)); border-color: var(--ds-secondary-border, var(--ds-border, var(--line))); }
+  .ds-card {
+    background: var(--ds-surface, #fff); border: 1px solid var(--ds-border, var(--line));
+    border-radius: var(--ds-radius, 12px); box-shadow: var(--ds-shadow, none); padding: 18px; max-width: 360px;
+  }
+  .ds-card h4 { margin: 0 0 4px; font-size: var(--ds-title-size, 17px); }
+  .ds-card p { margin: 0; font-size: 14px; color: var(--ds-muted, var(--ink-2)); }
+  .ds-input {
+    font: inherit; font-size: 15px; width: 100%; max-width: 360px; padding: 12px 14px;
+    border-radius: var(--ds-input-radius, var(--ds-radius, 10px)); border: 1px solid var(--ds-border, var(--line));
+    background: var(--ds-bg, #fff); color: var(--ds-text, var(--ink));
+  }
+  .ds-chip { font-size: 13px; padding: 6px 12px; border-radius: 999px; background: var(--ds-primary-soft, color-mix(in srgb, var(--ds-primary, var(--accent)) 12%, #fff)); color: var(--ds-primary, var(--accent)); }
+  .preview-label { font-size: 12px; color: var(--ink-3); margin: 0 0 8px; font-family: "Pretendard Variable", Pretendard, sans-serif; }
+
   /* ---------- chips ---------- */
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; color: var(--ink-2); }
@@ -212,6 +274,8 @@
     .grid { grid-template-columns: 1fr; }
     .shots { grid-template-columns: 1fr; }
     .compare { grid-template-columns: 1fr; }
+    .type-row { grid-template-columns: 1fr; gap: 6px; }
+    .ds-preview { padding: 18px; }
     .spectrum-row { grid-template-columns: 72px minmax(0, 1fr) 72px; gap: 10px; }
     .shots.is-mobile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .kv { grid-template-columns: 1fr; gap: 2px; }
