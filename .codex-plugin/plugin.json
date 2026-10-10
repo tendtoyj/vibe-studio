@@ -1,0 +1,38 @@
+{
+  "name": "vibe-studio",
+  "version": "0.1.0",
+  "description": "Vibe Studio skill pack for taking a new app or web product from idea brainstorming to benchmark research, user flows, brand voice, design brand fitting, and PRD.",
+  "author": {
+    "name": "tendtoyj",
+    "email": "tendtoyj@gmail.com"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Vibe Studio",
+    "shortDescription": "Plan and build new app and web products in one place.",
+    "longDescription": "Vibe Studio bundles a staged product workflow for new app and web ideas: brainstorming, benchmark research, user-flow generation, brand voice, design-system brand fitting, and PRD synthesis.",
+    "developerName": "tendtoyj",
+    "category": "Productivity",
+    "capabilities": [
+      "Product planning",
+      "UX research",
+      "User flows",
+      "Brand voice",
+      "PRD generation"
+    ],
+    "websiteURL": "https://github.com/tendtoyj/vibe-studio",
+    "brandColor": "#2F6BFF",
+    "defaultPrompt": "Help me plan a new app or web service with the Vibe Studio workflow."
+  },
+  "homepage": "https://github.com/tendtoyj/vibe-studio",
+  "repository": "https://github.com/tendtoyj/vibe-studio",
+  "license": "MIT",
+  "keywords": [
+    "ux",
+    "product",
+    "planning",
+    "brainstorming",
+    "prd",
+    "vibe-coding"
+  ]
+}
